@@ -10,7 +10,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:game_store/core/routing/app_router.dart';
 import 'package:game_store/game_video_store_app.dart';
 
-import 'package:game_store/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
