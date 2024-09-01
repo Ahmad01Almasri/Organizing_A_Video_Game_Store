@@ -5,7 +5,8 @@ import 'package:game_store/core/helpers/spacing.dart';
 import 'package:game_store/core/theming/styles.dart';
 
 import '../../../../../core/theming/colors.dart';
-import '../custom_text_field.dart';
+import '../../../../../core/widget/custom_text_field.dart';
+import '../dialogs/select_time_dialogs.dart';
 
 List<String> cityName = [
   'لابتوب',
@@ -87,7 +88,9 @@ Future<dynamic> showAddDeviceBottomSheet(BuildContext context) {
                 minWidth: double.infinity,
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15))),
-                onPressed: () {},
+                onPressed: () {
+                  showTimeSelectionDialog(context);
+                },
                 color: AppColors.primaryColor,
                 child: Text(
                   "حفظ",
