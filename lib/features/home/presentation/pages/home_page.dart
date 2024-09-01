@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:game_store/core/theming/colors.dart';
 import 'package:game_store/core/theming/styles.dart';
-import '../widgets/bottom_sheet/add_device_bottom_sheet.dart';
 import '../widgets/card_item.dart';
 import '../widgets/add_item_floating_action_button.dart';
 
