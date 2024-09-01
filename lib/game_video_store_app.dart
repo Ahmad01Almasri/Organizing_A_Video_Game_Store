@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/helpers/app_strings.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/theming/colors.dart';
@@ -16,10 +17,10 @@ class GameStoreApp extends StatelessWidget {
         designSize: const Size(375, 812),
         minTextAdapt: true,
         child: MaterialApp(
-          title: 'Game Store',
           theme: ThemeData(
-            primaryColor: AppColors.mainBlue,
-            scaffoldBackgroundColor: Colors.white,
+            primaryColor: AppColors.primaryColor,
+            scaffoldBackgroundColor: AppColors.white,
+            fontFamily: AppStrings.appFont,
           ),
           debugShowCheckedModeBanner: false,
           initialRoute: Routes.homeScreen,

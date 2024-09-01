@@ -11,10 +11,10 @@ class AppTextStyles {
     color: Colors.black,
   );
 
-  static TextStyle font32BlueBold = TextStyle(
+  static TextStyle font32BlackBold = TextStyle(
     fontSize: 32.sp,
     fontWeight: AppFontWeight.bold,
-    color: AppColors.mainBlue,
+    color: AppColors.black,
   );
 
   static TextStyle font13BlueSemiBold = TextStyle(
@@ -41,10 +41,10 @@ class AppTextStyles {
     color: AppColors.mainBlue,
   );
 
-  static TextStyle font16WhiteSemiBold = TextStyle(
+  static TextStyle font16graySemiBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: AppFontWeight.semiBold,
-    color: Colors.white,
+    color: AppColors.gray,
   );
 
   static TextStyle font13GrayRegular = TextStyle(
@@ -107,8 +107,8 @@ class AppTextStyles {
     color: AppColors.darkBlue,
   );
 
-  static TextStyle font16WhiteMedium = TextStyle(
-    fontSize: 16.sp,
+  static TextStyle font17WhiteMedium = TextStyle(
+    fontSize: 17.sp,
     fontWeight: AppFontWeight.medium,
     color: Colors.white,
   );
@@ -119,16 +119,16 @@ class AppTextStyles {
     color: AppColors.mainBlue,
   );
 
-  static TextStyle font15DarkBlueMedium = TextStyle(
+  static TextStyle font15DarkMedium = TextStyle(
     fontSize: 15.sp,
     fontWeight: AppFontWeight.medium,
-    color: AppColors.darkBlue,
+    color: AppColors.black,
   );
 
-  static TextStyle font18DarkBlueBold = TextStyle(
+  static TextStyle font18graySemiBold = TextStyle(
     fontSize: 18.sp,
-    fontWeight: AppFontWeight.bold,
-    color: AppColors.darkBlue,
+    fontWeight: AppFontWeight.semiBold,
+    color: AppColors.gray,
   );
 
   static TextStyle font18DarkBlueSemiBold = TextStyle(
@@ -142,4 +142,68 @@ class AppTextStyles {
     fontWeight: AppFontWeight.medium,
     color: Colors.white,
   );
+  static TextStyle poppins600style40 = const TextStyle(
+    fontSize: 40,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryColor,
+  );
+  static TextStyle poppins400style12 = const TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: AppColors.deepGrey,
+  );
+  static TextStyle poppinsBoldstyle18 = const TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: AppColors.primaryColor,
+  );
+  static TextStyle poppinsBoldstyle24 = const TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black,
+  );
+  static TextStyle poppins500style24 = const TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    color: AppColors.black,
+  );
+  static TextStyle poppinsw600style14 = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+  static TextStyle poppins600style12 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: AppColors.red.withOpacity(0.7),
+  );
+
+  static TextStyle poppinsBoldstyle16 = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    color: AppColors.white,
+  );
+
+  static TextStyle poppinsW500style16 = const TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black38,
+  );
+
+  static TextStyle poppins400style20 = const TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: AppColors.deepBrown,
+  );
+  static TextStyle poppinsW500style15 = const TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryColor,
+  );
+
+  static TextStyle poppinsThinW6000style22 = const TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.w600,
+      color: AppColors.black,
+      fontFamily: "Poppins-Thin.ttf");
 }
