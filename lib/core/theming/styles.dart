@@ -11,9 +11,9 @@ class AppTextStyles {
     color: Colors.black,
   );
 
-  static TextStyle font32BlackBold = TextStyle(
-    fontSize: 32.sp,
-    fontWeight: AppFontWeight.bold,
+  static TextStyle font20BlackBold = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: AppFontWeight.semiBold,
     color: AppColors.black,
   );
 

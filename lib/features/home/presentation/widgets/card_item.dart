@@ -29,7 +29,7 @@ class CardItem extends StatelessWidget {
               // commentId,
               // );
             },
-            backgroundColor: Colors.red.shade100, // لون خلفية الحذف
+            backgroundColor: AppColors.redShade100,
             child: const Icon(Icons.delete, color: AppColors.red),
           ),
         ],
@@ -44,10 +44,10 @@ class CardItem extends StatelessWidget {
               // For example, show an edit dialog
               // showEditCommentDialog(context, commentText, commentId);
             },
-            backgroundColor: Colors.amber.shade100, // لون خلفية التحرير
+            backgroundColor: AppColors.amberShade100,
             child: SizedBox(
-              height: 40.h, // نفس ارتفاع الـ Card
-              child: const Icon(Icons.edit, color: Colors.amber),
+              height: 40.h,
+              child: const Icon(Icons.edit, color: AppColors.amber),
             ),
           ),
         ],
@@ -84,7 +84,8 @@ class CardItem extends StatelessWidget {
                           ),
                           Text(
                             "65000 " "ل.س" + "/ " + "ساعة",
-                            style: AppTextStyles.font16graySemiBold,
+                            style: AppTextStyles.font16graySemiBold
+                                .copyWith(color: AppColors.gray),
                           ),
                         ],
                       ),

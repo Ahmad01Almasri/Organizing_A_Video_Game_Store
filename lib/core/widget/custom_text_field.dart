@@ -36,7 +36,7 @@ class CustomTextForm extends StatelessWidget {
       readOnly: readOnly ?? false,
       focusNode: focusNode,
       cursorColor: AppColors.primaryColor,
-      style: AppTextStyles.poppinsW500style16.copyWith(color: AppColors.black),
+      style: AppTextStyles.font20BlackBold,
       validator: validator,
       controller: controller,
       obscureText: obscureText ?? false,

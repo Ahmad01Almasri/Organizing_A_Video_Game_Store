@@ -56,23 +56,26 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
         verticalSpace(15),
         CustomTextForm(
           readOnly: true,
-          suffixIcon: DropdownButton<String>(
-            items: AppConstants.deviceName.map((item) {
-              return DropdownMenuItem<String>(
-                value: item,
-                child: Text(
-                  item,
-                  style:
-                      AppTextStyles.poppinsW500style15.copyWith(fontSize: 20),
-                ),
-              );
-            }).toList(),
-            onChanged: (value) {
-              setState(() {
-                widget.selectedDevice = value!;
-                widget.typeDeviceTextController.text = widget.selectedDevice;
-              });
-            },
+          suffixIcon: Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: DropdownButton<String>(
+              items: AppConstants.deviceName.map((item) {
+                return DropdownMenuItem<String>(
+                  value: item,
+                  child: Text(
+                    item,
+                    style:
+                        AppTextStyles.poppinsW500style15.copyWith(fontSize: 20),
+                  ),
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  widget.selectedDevice = value!;
+                  widget.typeDeviceTextController.text = widget.selectedDevice;
+                });
+              },
+            ),
           ),
           labelText: "نوع الجهاز",
           controller: widget.typeDeviceTextController,
