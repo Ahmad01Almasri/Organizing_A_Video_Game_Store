@@ -12,6 +12,7 @@ class CustomTextForm extends StatelessWidget {
   final Widget? suffixIcon;
   final String? labelText;
   final TextInputType? keyboardType;
+  final FocusNode? focusNode;
   final Function()? onTap;
   final String? Function(String?)? validator;
   const CustomTextForm(
@@ -25,13 +26,15 @@ class CustomTextForm extends StatelessWidget {
       this.onTap,
       this.prefixIcon,
       this.suffixIcon,
-      this.labelText});
+      this.labelText,
+      this.focusNode});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onTap: onTap ?? () {},
       readOnly: readOnly ?? false,
+      focusNode: focusNode,
       cursorColor: AppColors.primaryColor,
       style: AppTextStyles.poppinsW500style16.copyWith(color: AppColors.black),
       validator: validator,

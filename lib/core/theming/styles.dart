@@ -44,7 +44,7 @@ class AppTextStyles {
   static TextStyle font16graySemiBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: AppFontWeight.semiBold,
-    color: AppColors.gray,
+    color: AppColors.primaryColor,
   );
 
   static TextStyle font16grayBold = TextStyle(
