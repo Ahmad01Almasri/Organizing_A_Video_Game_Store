@@ -19,8 +19,10 @@ class ListViewDevices extends StatelessWidget {
           itemCount: devices.length,
           itemBuilder: (context, index) {
             final DeviceModel device = devices[index];
-
-            return CardItem(device: devices[index]);
+            return CardItem(
+              device: devices[index],
+              index: index,
+            );
           }),
     );
   }

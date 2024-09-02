@@ -6,7 +6,9 @@ import 'form_add_item.dart';
 import 'save_add_item_button.dart';
 
 String selectedDevice = "";
-Future<dynamic> showAddDeviceBottomSheet(BuildContext context) {
+Future<dynamic> showAddDeviceBottomSheet(
+  BuildContext context,
+) {
   final nameDeviceTextController = TextEditingController();
   final typeDeviceTextController = TextEditingController();
   final priceHourDeviceTextController = TextEditingController();

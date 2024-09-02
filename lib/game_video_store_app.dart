@@ -18,6 +18,9 @@ class GameStoreApp extends StatelessWidget {
         minTextAdapt: true,
         child: MaterialApp(
           theme: ThemeData(
+            textSelectionTheme: const TextSelectionThemeData(
+              cursorColor: AppColors.primaryColor,
+            ),
             primaryColor: AppColors.primaryColor,
             scaffoldBackgroundColor: AppColors.white,
             fontFamily: AppStrings.appFont,

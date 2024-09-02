@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:game_store/core/helpers/extensions.dart';
-import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 
-import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../data/models/device_model.dart';
+import '../../cubit/device_cubit.dart';
 
 Future<void> showDeleteDeviceConfirmationDialog(
     BuildContext context, DeviceModel device) async {
-  final _cubit = BlocProvider.of<DeviceCubit>(context);
-
   return showDialog<void>(
     context: context,
     barrierDismissible: true, // User must tap a button to confirm or cancel
@@ -49,9 +45,9 @@ Future<void> showDeleteDeviceConfirmationDialog(
                     style: AppTextStyles.poppinsBoldstyle16
                         .copyWith(color: AppColors.red)),
                 onPressed: () async {
-                  _cubit.deleteDevice(device);
+                  context.read<DeviceCubit>().deleteDevice(device);
 
-                  context.pushReplacementNamed(Routes.homeScreen);
+                  Navigator.pop(context);
                 },
               ),
             ],

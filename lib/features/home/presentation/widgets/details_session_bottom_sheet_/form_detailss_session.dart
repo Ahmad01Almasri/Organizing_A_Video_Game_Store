@@ -11,10 +11,13 @@ class FormTextDetailsSession extends StatefulWidget {
     super.key,
     required this.customerNameController,
     required this.customerTimeController,
+    required this.isAvailable,
+    required this.formstate,
   });
-
+  final bool isAvailable;
   final TextEditingController customerNameController;
   final TextEditingController customerTimeController;
+  final GlobalKey<FormState> formstate;
 
   @override
   State<FormTextDetailsSession> createState() => _FormTextDetailsSessionState();
@@ -41,44 +44,45 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomTextForm(
+    return Form(
+      key: widget.formstate,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomTextForm(
             labelText: "اسم الزبون",
             focusNode: _nameFocusNode,
             controller: widget.customerNameController,
             validator: (text) {
               return AppConstants.validationNotEmpty(text);
             },
-            readOnly: false
-            // isAvaliable?false:true,
-            ),
-        verticalSpace(10),
-        // isAvaliable?
-        TextButton(
-            onPressed: () => showTimeSelectionDialog(context),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.timer,
-                  color: AppColors.primaryColor,
+            readOnly: widget.isAvailable ? false : true,
+          ),
+          verticalSpace(10),
+          widget.isAvailable
+              ? TextButton(
+                  onPressed: () => showTimeSelectionDialog(context),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.timer,
+                        color: AppColors.primaryColor,
+                      ),
+                      horizontalSpace(10),
+                      Text(
+                        "ضبط تذكير",
+                        style: AppTextStyles.font18DarkBlueSemiBold
+                            .copyWith(color: AppColors.primaryColor),
+                      ),
+                    ],
+                  ))
+              : CustomTextForm(
+                  labelText: "الوقت",
+                  controller: widget.customerTimeController,
+                  readOnly: true,
                 ),
-                horizontalSpace(10),
-                Text(
-                  "ضبط تذكير",
-                  style: AppTextStyles.font18DarkBlueSemiBold
-                      .copyWith(color: AppColors.primaryColor),
-                ),
-              ],
-            )),
-        // :
-        CustomTextForm(
-          labelText: "الوقت",
-          controller: widget.customerTimeController,
-          readOnly: true,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
