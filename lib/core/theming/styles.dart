@@ -35,10 +35,10 @@ class AppTextStyles {
     color: AppColors.darkBlue,
   );
 
-  static TextStyle font24BlueBold = TextStyle(
-    fontSize: 24.sp,
+  static TextStyle font35BlackBold = TextStyle(
+    fontSize: 35.sp,
     fontWeight: AppFontWeight.bold,
-    color: AppColors.mainBlue,
+    color: AppColors.black,
   );
 
   static TextStyle font16graySemiBold = TextStyle(

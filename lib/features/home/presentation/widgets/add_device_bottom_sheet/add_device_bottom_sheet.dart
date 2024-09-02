@@ -6,13 +6,13 @@ import 'form_add_item.dart';
 import 'save_add_item_button.dart';
 
 String selectedDevice = "";
-
 Future<dynamic> showAddDeviceBottomSheet(BuildContext context) {
   final nameDeviceTextController = TextEditingController();
   final typeDeviceTextController = TextEditingController();
   final priceHourDeviceTextController = TextEditingController();
 
   final FocusNode nameFocusNode = FocusNode();
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   return showModalBottomSheet(
     isScrollControlled: true,
@@ -21,18 +21,24 @@ Future<dynamic> showAddDeviceBottomSheet(BuildContext context) {
       textDirection: TextDirection.rtl,
       child: SingleChildScrollView(
         child: Form(
+          key: formstate,
           child: Padding(
             padding: EdgeInsets.all(20.w),
             child: Column(
               children: [
                 FormTextFieldAddItem(
                   selectedDevice: selectedDevice,
-                  nameDeviceTextController: nameDeviceTextController,
-                  typeDeviceTextController: typeDeviceTextController,
-                  priceHourDeviceTextController: priceHourDeviceTextController,
+                  nameDeviceController: nameDeviceTextController,
+                  typeDeviceController: typeDeviceTextController,
+                  priceHourDeviceController: priceHourDeviceTextController,
                 ),
                 verticalSpace(30),
-                const SaveAddItemButton(),
+                SaveAddItemButton(
+                  formstate: formstate,
+                  nameDeviceController: nameDeviceTextController,
+                  typeDeviceController: typeDeviceTextController,
+                  priceHourDeviceController: priceHourDeviceTextController,
+                ),
                 verticalSpace(300),
               ],
             ),

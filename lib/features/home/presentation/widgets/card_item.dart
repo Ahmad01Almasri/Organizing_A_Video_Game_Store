@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:game_store/features/home/data/models/device_model.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
 import 'details_session_bottom_sheet_/details_session_bottom_sheet.dart';
+import 'dialogs/edit_item_dialog.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({
+  final DeviceModel device;
+  CardItem({
     super.key,
+    required this.device,
   });
 
   @override
@@ -40,9 +43,9 @@ class CardItem extends StatelessWidget {
           CustomSlidableAction(
             borderRadius: BorderRadius.all(Radius.circular(20)),
             onPressed: (context) {
-              // Add edit functionality here
-              // For example, show an edit dialog
-              // showEditCommentDialog(context, commentText, commentId);
+              // showEditItemDialog(
+              //   context,
+              // );
             },
             backgroundColor: AppColors.amberShade100,
             child: SizedBox(
@@ -69,21 +72,31 @@ class CardItem extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(
-                        Icons.laptop_windows_rounded,
-                        color: AppColors.gray,
-                      ),
+                      device.type == "لابتوب"
+                          ? const Icon(
+                              Icons.laptop_windows_rounded,
+                              color: AppColors.gray,
+                            )
+                          : device.type == "حاسب"
+                              ? const Icon(
+                                  Icons.desktop_windows_rounded,
+                                  color: AppColors.gray,
+                                )
+                              : const Icon(
+                                  Icons.gamepad_outlined,
+                                  color: AppColors.gray,
+                                ),
                       horizontalSpace(15),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "لابتوب",
+                            device.name,
                             style: AppTextStyles.font24BlackBold
                                 .copyWith(fontSize: 22.sp),
                           ),
                           Text(
-                            "65000 " "ل.س" + "/ " + "ساعة",
+                            device.price + "ل.س" + "/ " + "ساعة",
                             style: AppTextStyles.font16graySemiBold
                                 .copyWith(color: AppColors.gray),
                           ),
@@ -93,7 +106,9 @@ class CardItem extends StatelessWidget {
                   ),
                   CircleAvatar(
                     maxRadius: 10.h,
-                    backgroundColor: AppColors.primaryColor,
+                    backgroundColor: device.isAvailable
+                        ? AppColors.primaryColor
+                        : AppColors.red,
                   ),
                 ],
               ),

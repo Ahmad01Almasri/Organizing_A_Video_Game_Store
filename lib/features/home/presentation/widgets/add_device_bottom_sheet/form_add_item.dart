@@ -6,16 +6,16 @@ import '../../../../../core/widget/custom_text_field.dart';
 
 class FormTextFieldAddItem extends StatefulWidget {
   String selectedDevice;
-  final TextEditingController nameDeviceTextController;
-  final TextEditingController typeDeviceTextController;
-  final TextEditingController priceHourDeviceTextController;
+  final TextEditingController nameDeviceController;
+  final TextEditingController typeDeviceController;
+  final TextEditingController priceHourDeviceController;
 
   FormTextFieldAddItem({
     Key? key,
     required this.selectedDevice,
-    required this.nameDeviceTextController,
-    required this.typeDeviceTextController,
-    required this.priceHourDeviceTextController,
+    required this.nameDeviceController,
+    required this.typeDeviceController,
+    required this.priceHourDeviceController,
   }) : super(key: key);
 
   @override
@@ -47,7 +47,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
       children: [
         CustomTextForm(
           labelText: "اسم الجهاز",
-          controller: widget.nameDeviceTextController,
+          controller: widget.nameDeviceController,
           focusNode: _nameFocusNode,
           validator: (text) {
             return AppConstants.validationNotEmpty(text);
@@ -72,18 +72,18 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
               onChanged: (value) {
                 setState(() {
                   widget.selectedDevice = value!;
-                  widget.typeDeviceTextController.text = widget.selectedDevice;
+                  widget.typeDeviceController.text = widget.selectedDevice;
                 });
               },
             ),
           ),
           labelText: "نوع الجهاز",
-          controller: widget.typeDeviceTextController,
+          controller: widget.typeDeviceController,
         ),
         verticalSpace(15),
         CustomTextForm(
           labelText: "سعر الساعة",
-          controller: widget.priceHourDeviceTextController,
+          controller: widget.priceHourDeviceController,
           keyboardType: TextInputType.number,
           validator: (text) {
             return AppConstants.validationNotEmpty(text);
