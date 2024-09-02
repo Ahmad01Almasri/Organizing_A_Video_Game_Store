@@ -33,7 +33,6 @@ class _SaveAddItemButtonState extends State<SaveAddItemButton> {
   @override
   void initState() {
     _cubit = di.sl<DeviceCubit>();
-    // TODO: implement initState
     super.initState();
   }
 

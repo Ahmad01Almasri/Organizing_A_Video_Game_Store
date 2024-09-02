@@ -14,7 +14,6 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(DeviceModelAdapter());
   await Hive.openBox<DeviceModel>("devicesBox");
-  //setupGetIt();
   // To fix texts being hidden bug in flutter_screenutil in release mode.
   await ScreenUtil.ensureScreenSize();
   runApp(GameStoreApp(

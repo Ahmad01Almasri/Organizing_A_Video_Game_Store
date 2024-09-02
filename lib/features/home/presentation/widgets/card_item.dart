@@ -7,11 +7,11 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
 import 'details_session_bottom_sheet_/details_session_bottom_sheet.dart';
-import 'dialogs/edit_item_dialog.dart';
+import 'dialogs/delet_confirmation_dialog.dart';
 
 class CardItem extends StatelessWidget {
   final DeviceModel device;
-  CardItem({
+  const CardItem({
     super.key,
     required this.device,
   });
@@ -24,13 +24,9 @@ class CardItem extends StatelessWidget {
         motion: const ScrollMotion(),
         children: [
           CustomSlidableAction(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
             onPressed: (context) {
-              // Add delete functionality here
-              // showDeleteCommentConfirmationDialog(
-              //   context,
-              // commentId,
-              // );
+              showDeleteDeviceConfirmationDialog(context, device);
             },
             backgroundColor: AppColors.redShade100,
             child: const Icon(Icons.delete, color: AppColors.red),
@@ -41,7 +37,7 @@ class CardItem extends StatelessWidget {
         motion: const ScrollMotion(),
         children: [
           CustomSlidableAction(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
             onPressed: (context) {
               // showEditItemDialog(
               //   context,
