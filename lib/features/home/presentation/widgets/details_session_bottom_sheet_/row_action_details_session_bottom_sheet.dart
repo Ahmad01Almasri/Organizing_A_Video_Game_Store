@@ -6,8 +6,8 @@ import '../../../../../core/theming/styles.dart';
 import '../dialogs/closed_session_dialog.dart';
 import 'action_button.dart';
 
-class RowActionButton extends StatelessWidget {
-  const RowActionButton({
+class DeletSessionActionButton extends StatelessWidget {
+  const DeletSessionActionButton({
     super.key,
   });
 

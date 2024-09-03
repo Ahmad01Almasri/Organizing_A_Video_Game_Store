@@ -5,19 +5,20 @@ import '../../../../../core/helpers/app_constants.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/widget/custom_text_field.dart';
 import '../dialogs/select_time_dialogs.dart';
+import 'details_session_bottom_sheet.dart';
 
 class FormTextDetailsSession extends StatefulWidget {
   const FormTextDetailsSession({
     super.key,
+    required this.formstate,
     required this.customerNameController,
     required this.customerTimeController,
     required this.isAvailable,
-    required this.formstate,
   });
   final bool isAvailable;
+  final GlobalKey<FormState> formstate;
   final TextEditingController customerNameController;
   final TextEditingController customerTimeController;
-  final GlobalKey<FormState> formstate;
 
   @override
   State<FormTextDetailsSession> createState() => _FormTextDetailsSessionState();
@@ -51,17 +52,25 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
         children: [
           CustomTextForm(
             labelText: "اسم الزبون",
-            focusNode: _nameFocusNode,
             controller: widget.customerNameController,
             validator: (text) {
               return AppConstants.validationNotEmpty(text);
             },
-            readOnly: widget.isAvailable ? false : true,
+            readOnly: !widget.isAvailable,
           ),
           verticalSpace(10),
           widget.isAvailable
               ? TextButton(
-                  onPressed: () => showTimeSelectionDialog(context),
+                  onPressed: () async {
+                    selectedTime = await showTimeSelectionDialog(context);
+                    if (selectedTime != null) {
+                      final now = DateTime.now();
+                      final selectedDateTime =
+                          DateTime(selectedTime!.hour, selectedTime!.minute);
+                      widget.customerTimeController.text =
+                          selectedDateTime.toString();
+                    }
+                  },
                   child: Row(
                     children: [
                       const Icon(
@@ -75,7 +84,8 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
                             .copyWith(color: AppColors.primaryColor),
                       ),
                     ],
-                  ))
+                  ),
+                )
               : CustomTextForm(
                   labelText: "الوقت",
                   controller: widget.customerTimeController,

@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/core/helpers/spacing.dart';
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/styles.dart';
+import 'package:game_store/features/home/data/models/device_model.dart';
+import 'add_session_button.dart';
 import 'form_detailss_session.dart';
 import 'row_action_details_session_bottom_sheet.dart';
 
-String selectedDevice = "";
+TimeOfDay? selectedTime = null;
+String customerName = "";
+Future<void> showDetailsSessionBottomSheet(
+    BuildContext context, bool isAvailable, DeviceModel device) async {
+  final customerNameController =
+      TextEditingController(text: device.customer?.name ?? "");
+  final customerTimeController = TextEditingController(
+    text: device.customer?.usageTime != null
+        ? "${device.customer!.usageTime!.hour.toString().padLeft(2, '0')}:${device.customer!.usageTime!.minute.toString().padLeft(2, '0')}"
+        : "",
+  );
 
-Future<dynamic> showDetailsSessionBottomSheet(
-    BuildContext context, bool isAvailable) {
-  final customerNameController = TextEditingController();
-  final customerTimeController = TextEditingController();
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  final GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
-  final FocusNode nameFocusNode = FocusNode();
   return showModalBottomSheet(
     isScrollControlled: true,
     context: context,
@@ -26,37 +31,24 @@ Future<dynamic> showDetailsSessionBottomSheet(
           child: Column(
             children: [
               FormTextDetailsSession(
-                formstate: formstate,
-                isAvailable: isAvailable,
-                customerTimeController: customerTimeController,
-                customerNameController: customerNameController,
-              ),
+                  isAvailable: device.isAvailable,
+                  formstate: formstate,
+                  customerNameController: customerNameController,
+                  customerTimeController: customerTimeController),
               verticalSpace(30),
               isAvailable
-                  ? const RowActionButton()
-                  : MaterialButton(
-                      height: 50,
-                      minWidth: double.infinity,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
-                      onPressed: () {
-                        if (formstate.currentState!.validate()) {
-                          Navigator.pop(context);
-                        }
-                      },
-                      color: AppColors.primaryColor,
-                      child: Text(
-                        "حفظ",
-                        style: AppTextStyles.font17WhiteMedium,
-                      ),
-                    ),
+                  ? AddSessionButton(
+                      formstate: formstate,
+                      customerTimeController: customerTimeController,
+                      customerNameController: customerNameController,
+                      device: device,
+                    )
+                  : const DeletSessionActionButton(),
               verticalSpace(290),
             ],
           ),
         ),
       ),
     ),
-  ).whenComplete(() {
-    nameFocusNode.dispose();
-  });
+  );
 }

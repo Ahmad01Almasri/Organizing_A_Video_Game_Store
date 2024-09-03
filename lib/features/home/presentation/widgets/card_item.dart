@@ -63,7 +63,7 @@ class CardItem extends StatelessWidget {
               ],
             ),
             child: GestureDetector(
-              onTap: () => showDetailsSessionBottomSheet(context, true),
+              onTap: () => showDetailsSessionBottomSheet(context, true, device),
               child: SizedBox(
                 height: 90.h,
                 child: Card(
@@ -125,7 +125,7 @@ class CardItem extends StatelessWidget {
             ),
           )
         : GestureDetector(
-            onTap: () => showDetailsSessionBottomSheet(context, false),
+            onTap: () => showDetailsSessionBottomSheet(context, false, device),
             child: SizedBox(
               height: 90.h,
               child: Card(

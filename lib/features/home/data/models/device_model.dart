@@ -1,6 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 
+import 'submodel/customer_model.dart';
+
 part 'device_model.g.dart';
 
 @HiveType(typeId: 1)
@@ -15,6 +17,8 @@ class DeviceModel extends HiveObject {
   String price;
   @HiveField(4)
   bool isAvailable;
+  @HiveField(5)
+  CustomerModel? customer; // Nullable to allow for no customer
 
   DeviceModel({
     required this.id,
@@ -22,6 +26,7 @@ class DeviceModel extends HiveObject {
     required this.type,
     required this.price,
     required this.isAvailable,
+    this.customer,
   });
 
   factory DeviceModel.create({
@@ -37,4 +42,16 @@ class DeviceModel extends HiveObject {
         price: price ?? "0.0",
         isAvailable: isAvailable ?? true,
       );
+
+  // Method to set a new customer
+  void setCustomer(CustomerModel customer) {
+    this.customer = customer;
+    save(); // Save the updated device
+  }
+
+  // Method to remove the current customer
+  void removeCustomer() {
+    this.customer = null;
+    save(); // Save the updated device
+  }
 }
