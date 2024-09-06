@@ -19,7 +19,7 @@ class CustomerModelAdapter extends TypeAdapter<CustomerModel> {
     return CustomerModel(
       id: fields[0] as String,
       name: fields[1] as String,
-      usageTime: fields[2] as DateTime,
+      createdAt: fields[2] as DateTime,
     );
   }
 
@@ -32,7 +32,7 @@ class CustomerModelAdapter extends TypeAdapter<CustomerModel> {
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.usageTime);
+      ..write(obj.createdAt);
   }
 
   @override

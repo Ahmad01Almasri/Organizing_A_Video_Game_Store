@@ -1,25 +1,43 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../data/models/device_model.dart';
 import '../../../data/models/submodel/customer_model.dart';
 import '../../../data/sources/local_device_data_source.dart';
+import '../../cubit/device_state.dart';
 import 'details_session_bottom_sheet.dart';
 
-class AddSessionButton extends StatelessWidget {
+class AddSessionButton extends StatefulWidget {
   const AddSessionButton({
     super.key,
     required this.formstate,
     required this.customerNameController,
-    required this.customerTimeController,
     required this.device,
   });
 
   final GlobalKey<FormState> formstate;
   final TextEditingController customerNameController;
-  final TextEditingController customerTimeController;
   final DeviceModel device;
+
+  @override
+  _AddSessionButtonState createState() => _AddSessionButtonState();
+}
+
+class _AddSessionButtonState extends State<AddSessionButton> {
+  int counter = 0;
+  // void startTimer() {
+  //   Timer.periodic(Duration(seconds: 1), (timer) {
+  //     print(timer.tick);
+  //     setState(() {
+  //       counter++;
+  //       widget.device.customer?.usageTime = counter;
+  //     });
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -29,42 +47,20 @@ class AddSessionButton extends StatelessWidget {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15))),
       onPressed: () async {
-        if (formstate.currentState!.validate()) {
-          device.isAvailable = !device.isAvailable;
-          device.save();
-
+        if (widget.formstate.currentState!.validate()) {
           if (selectedTime != null) {
-            final now = DateTime.now();
-            final selectedDateTime = DateTime(
-              now.year,
-              now.month,
-              now.day,
-              selectedTime!.hour,
-              selectedTime!.minute,
-            );
-
-            // حساب الوقت المنقضي
-            final elapsedDuration = now.difference(selectedDateTime);
-            final hours = elapsedDuration.inHours;
-            final minutes = elapsedDuration.inMinutes.remainder(60);
-
-            // تحديث customerTimeController بالوقت المنقضي
-            customerTimeController.text = '$hours ساعات و $minutes دقائق';
-            // تخزين اسم الزبون
-            customerName = customerNameController.text;
+            customerName = widget.customerNameController.text;
 
             if (customerName.isNotEmpty) {
               final customer = CustomerModel.create(
                 name: customerName,
-                usageTime: selectedDateTime.add(elapsedDuration),
               );
 
-              device.setCustomer(customer);
+              widget.device.setCustomer(customer);
+              context
+                  .read<DeviceCubit>()
+                  .toggleDeviceAvailability(widget.device);
 
-              // حفظ الجهاز المحدث
-              LocalDeviceDataSource.updateDevice(device: device);
-
-              // إغلاق الـ BottomSheet
               Navigator.pop(context);
             }
           }

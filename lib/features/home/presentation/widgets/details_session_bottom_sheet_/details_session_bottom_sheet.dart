@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/core/helpers/spacing.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
+import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 import 'add_session_button.dart';
 import 'form_detailss_session.dart';
 import 'row_action_details_session_bottom_sheet.dart';
@@ -12,10 +14,12 @@ Future<void> showDetailsSessionBottomSheet(
     BuildContext context, bool isAvailable, DeviceModel device) async {
   final customerNameController =
       TextEditingController(text: device.customer?.name ?? "");
+
+  // تحويل الوقت إلى النص المعروض
   final customerTimeController = TextEditingController(
-    text: device.customer?.usageTime != null
-        ? "${device.customer!.usageTime!.hour.toString().padLeft(2, '0')}:${device.customer!.usageTime!.minute.toString().padLeft(2, '0')}"
-        : "",
+    text: device.customer?.createdAt != null
+        ? context.read<DeviceCubit>().getCustomerDuration(device.customer)
+        : '0',
   );
 
   final GlobalKey<FormState> formstate = GlobalKey<FormState>();
@@ -31,19 +35,22 @@ Future<void> showDetailsSessionBottomSheet(
           child: Column(
             children: [
               FormTextDetailsSession(
-                  isAvailable: device.isAvailable,
-                  formstate: formstate,
-                  customerNameController: customerNameController,
-                  customerTimeController: customerTimeController),
+                isAvailable: device.isAvailable,
+                formstate: formstate,
+                customerNameController: customerNameController,
+                customerTimeController:
+                    customerTimeController, // عرض المؤقت المحدث
+              ),
               verticalSpace(30),
               isAvailable
                   ? AddSessionButton(
                       formstate: formstate,
-                      customerTimeController: customerTimeController,
                       customerNameController: customerNameController,
                       device: device,
                     )
-                  : const DeletSessionActionButton(),
+                  : DeletSessionActionButton(
+                      device: device,
+                    ),
               verticalSpace(290),
             ],
           ),

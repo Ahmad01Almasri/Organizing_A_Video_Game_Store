@@ -9,6 +9,10 @@ class LocalDeviceDataSource {
   static const _boxName = "devicesBox";
   static final Box<DeviceModel> _box = Hive.box<DeviceModel>(_boxName);
 
+  static Future<Box<DeviceModel>> getDeviceBox() async {
+    return await Hive.openBox<DeviceModel>(_boxName);
+  }
+
   static ValueListenable<Box<DeviceModel>> listenToDevices() =>
       _box.listenable();
 

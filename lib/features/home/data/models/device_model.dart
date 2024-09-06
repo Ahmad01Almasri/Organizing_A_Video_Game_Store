@@ -1,6 +1,5 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
-
 import 'submodel/customer_model.dart';
 
 part 'device_model.g.dart';
@@ -49,9 +48,34 @@ class DeviceModel extends HiveObject {
     save(); // Save the updated device
   }
 
-  // Method to remove the current customer
-  void removeCustomer() {
-    this.customer = null;
-    save(); // Save the updated device
+// Method to remove the current customer
+  void removeCustomer() async {
+    if (this.customer != null) {
+      this.customer = null;
+
+      if (this.isInBox) {
+        await this.save();
+      } else {
+        var deviceBox = Hive.box<DeviceModel>('devicesBox');
+        await deviceBox.put(this.id, this); // استخدم put لتحديث الكائن
+      }
+    }
+  }
+
+  DeviceModel copyWith({
+    String? name,
+    String? type,
+    String? price,
+    bool? isAvailable,
+    CustomerModel? customer,
+  }) {
+    return DeviceModel(
+      id: id,
+      name: name ?? this.name,
+      type: type ?? this.type,
+      price: price ?? this.price,
+      isAvailable: isAvailable ?? this.isAvailable,
+      customer: customer ?? this.customer,
+    );
   }
 }

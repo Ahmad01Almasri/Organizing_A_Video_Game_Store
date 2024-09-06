@@ -64,7 +64,6 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
                   onPressed: () async {
                     selectedTime = await showTimeSelectionDialog(context);
                     if (selectedTime != null) {
-                      final now = DateTime.now();
                       final selectedDateTime =
                           DateTime(selectedTime!.hour, selectedTime!.minute);
                       widget.customerTimeController.text =
@@ -96,3 +95,11 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
     );
   }
 }
+            // final now = DateTime.now();
+            // final selectedDateTime = DateTime(
+            //   now.year,
+            //   now.month,
+            //   now.day,
+            //   selectedTime!.hour,
+            //   selectedTime!.minute,
+            // );

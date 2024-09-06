@@ -27,16 +27,6 @@ class SaveAddItemButton extends StatefulWidget {
 
 class _SaveAddItemButtonState extends State<SaveAddItemButton> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MaterialButton(
       height: 50,

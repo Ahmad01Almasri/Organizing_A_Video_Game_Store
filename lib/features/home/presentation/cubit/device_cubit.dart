@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import '../../data/models/submodel/customer_model.dart';
 import '../../data/sources/local_device_data_source.dart';
 import 'device_state.dart';
 
@@ -43,4 +47,45 @@ class DeviceCubit extends Cubit<DeviceState> {
       emit(DeviceError("Failed to delete device"));
     }
   }
+
+  void toggleDeviceAvailability(DeviceModel device) async {
+    try {
+      var deviceBox = Hive.box<DeviceModel>('devicesBox');
+      final updatedDevice = device.copyWith(isAvailable: !device.isAvailable);
+
+      if (device.isInBox) {
+        await deviceBox.put(device.id, updatedDevice);
+
+        await updatedDevice.save();
+      } else {
+        await deviceBox.put(updatedDevice.key, updatedDevice);
+      }
+      updateDevice(updatedDevice);
+    } catch (e) {
+      var deviceBox = Hive.box<DeviceModel>('devicesBox');
+      final updatedDevice = device.copyWith(isAvailable: !device.isAvailable);
+
+      if (device.isInBox) {
+        await deviceBox.put(device.id, updatedDevice);
+
+        await updatedDevice.save();
+      } else {
+        await deviceBox.put(updatedDevice.key, updatedDevice);
+      }
+      updateDevice(updatedDevice);
+    }
+  }
+
+  String getCustomerDuration(CustomerModel? customer) {
+    final duration = DateTime.now().difference(customer!.createdAt);
+    final hours = duration.inHours;
+    final minutes = duration.inMinutes.remainder(60);
+
+    return "$hours:$minutes";
+  }
+}
+
+class TimerUpdated extends DeviceState {
+  final int seconds;
+  TimerUpdated(this.seconds);
 }

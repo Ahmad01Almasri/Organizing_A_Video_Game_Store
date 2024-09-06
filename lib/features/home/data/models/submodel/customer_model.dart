@@ -9,21 +9,20 @@ class CustomerModel extends HiveObject {
   @HiveField(1)
   String name;
   @HiveField(2)
-  DateTime usageTime;
+  DateTime createdAt;
 
   CustomerModel({
     required this.id,
     required this.name,
-    required this.usageTime,
+    required this.createdAt,
   });
 
   factory CustomerModel.create({
     required String? name,
-    required DateTime? usageTime,
   }) =>
       CustomerModel(
         id: const Uuid().v1(),
         name: name ?? "",
-        usageTime: usageTime ?? DateTime.now(),
+        createdAt: DateTime.now(),
       );
 }
