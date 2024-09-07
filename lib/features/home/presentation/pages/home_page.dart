@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/add_device_floating_action_button.dart';
+import '../widgets/session/add/add_device_floating_action_button.dart';
 import '../widgets/cubit_builder_home_page.dart';
 
 class HomeScreen extends StatelessWidget {

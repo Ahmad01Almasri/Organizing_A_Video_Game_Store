@@ -7,11 +7,11 @@ import 'package:game_store/features/home/data/models/device_model.dart';
 import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../../../core/helpers/app_constants.dart';
-import '../../../../../core/helpers/app_functions.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/widget/custom_text_field.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../../core/helpers/app_constants.dart';
+import '../../../../../../core/helpers/app_functions.dart';
+import '../../../../../../core/helpers/spacing.dart';
+import '../../../../../../core/widget/custom_text_field.dart';
+import '../../../../../../generated/l10n.dart';
 
 class EditDeviceDialog extends StatefulWidget {
   final DeviceModel device;

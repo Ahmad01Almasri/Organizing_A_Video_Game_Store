@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/styles.dart';
-import '../../../data/models/device_model.dart';
-import '../../cubit/device_cubit.dart';
+import '../../../../../../core/theming/colors.dart';
+import '../../../../../../core/theming/styles.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../data/models/device_model.dart';
+import '../../../cubit/device_cubit.dart';
 
 Future<void> showDeleteDeviceConfirmationDialog(
     BuildContext context, DeviceModel device) async {
@@ -14,11 +15,11 @@ Future<void> showDeleteDeviceConfirmationDialog(
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text(
-          'Confirm Delete Comment',
+          S.of(context).confirm_delete_device,
           style: AppTextStyles.poppinsThinW6000style22,
         ),
         content: Text(
-          'Are you sure you want to delete comment?',
+          S.of(context).delete_confirmation,
           style:
               AppTextStyles.poppinsBoldstyle18.copyWith(color: AppColors.black),
         ),
@@ -30,7 +31,7 @@ Future<void> showDeleteDeviceConfirmationDialog(
                 style: ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(
                         AppColors.black38.withOpacity(0.7))),
-                child: Text('Cancel',
+                child: Text(S.of(context).cancel,
                     style: AppTextStyles.poppinsBoldstyle16
                         .copyWith(color: AppColors.green)),
                 onPressed: () {
@@ -41,7 +42,7 @@ Future<void> showDeleteDeviceConfirmationDialog(
                 style: ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(
                         AppColors.black38.withOpacity(0.7))),
-                child: Text('Delete',
+                child: Text(S.of(context).delete,
                     style: AppTextStyles.poppinsBoldstyle16
                         .copyWith(color: AppColors.red)),
                 onPressed: () async {

@@ -9,7 +9,7 @@ import '../../../../../../generated/l10n.dart';
 import '../../../../data/sources/local_device_data_source.dart';
 import '../../../cubit/device_cubit.dart';
 import '../delete/closed_session_dialog.dart';
-import 'action_button.dart';
+import '../details/action_button.dart';
 
 class DeletSessionActionButton extends StatefulWidget {
   final DeviceModel device;

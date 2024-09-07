@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:game_store/core/theming/colors.dart';
 import 'package:game_store/core/theming/styles.dart';
-import '../../../../../core/helpers/app_constants.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/widget/custom_text_field.dart';
-import '../../../../../generated/l10n.dart';
-import '../dialogs/select_time_dialogs.dart';
+import '../../../../../../core/helpers/app_constants.dart';
+import '../../../../../../core/helpers/spacing.dart';
+import '../../../../../../core/widget/custom_text_field.dart';
+import '../../../../../../generated/l10n.dart';
+import '../add/select_time_dialogs.dart';
 import 'details_session_bottom_sheet.dart';
 
 class FormTextDetailsSession extends StatefulWidget {

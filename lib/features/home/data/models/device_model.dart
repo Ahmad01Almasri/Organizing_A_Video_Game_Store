@@ -57,7 +57,7 @@ class DeviceModel extends HiveObject {
         await this.save();
       } else {
         var deviceBox = Hive.box<DeviceModel>('devicesBox');
-        await deviceBox.put(this.id, this); // استخدم put لتحديث الكائن
+        await deviceBox.put(this.id, this);
       }
     }
   }

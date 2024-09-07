@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/helpers/app_constants.dart';
-import '../../../../../core/helpers/app_functions.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/theming/styles.dart';
-import '../../../../../core/widget/custom_text_field.dart';
+import '../../../../../../core/helpers/app_constants.dart';
+import '../../../../../../core/helpers/app_functions.dart';
+import '../../../../../../core/helpers/spacing.dart';
+import '../../../../../../core/theming/styles.dart';
+import '../../../../../../core/widget/custom_text_field.dart';
+import '../../../../../../generated/l10n.dart';
 
 class FormTextFieldAddItem extends StatefulWidget {
   String selectedDevice;
@@ -47,7 +48,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
     return Column(
       children: [
         CustomTextForm(
-          labelText: "اسم الجهاز",
+          labelText: S.of(context).device_name,
           controller: widget.nameDeviceController,
           focusNode: _nameFocusNode,
           validator: (text) {
@@ -79,12 +80,12 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
               },
             ),
           ),
-          labelText: "نوع الجهاز",
+          labelText: S.of(context).device_type,
           controller: widget.typeDeviceController,
         ),
         verticalSpace(15),
         CustomTextForm(
-          labelText: "سعر الساعة",
+          labelText: S.of(context).hourly_rate,
           controller: widget.priceHourDeviceController,
           keyboardType: TextInputType.number,
           validator: (text) {

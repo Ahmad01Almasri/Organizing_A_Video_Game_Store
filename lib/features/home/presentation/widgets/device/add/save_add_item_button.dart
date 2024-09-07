@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/styles.dart';
-import '../../../../../generated/l10n.dart';
-import '../../../data/models/device_model.dart';
-import '../../cubit/device_cubit.dart';
+import '../../../../../../core/theming/colors.dart';
+import '../../../../../../core/theming/styles.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../data/models/device_model.dart';
+import '../../../cubit/device_cubit.dart';
 
 class SaveAddItemButton extends StatelessWidget {
   final TextEditingController nameDeviceController;

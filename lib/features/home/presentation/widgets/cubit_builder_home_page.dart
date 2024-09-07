@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/device_cubit.dart';
 import '../cubit/device_state.dart';
 import '../widgets/empty_device_list.dart';
-import '../widgets/list_view_device_item.dart';
+import 'device/list_view_device_item.dart';
 import '../widgets/top_bar_home.dart';
 
 class CubitBuilderHomePage extends StatelessWidget {

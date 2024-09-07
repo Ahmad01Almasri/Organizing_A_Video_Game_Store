@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
-import 'package:game_store/features/home/presentation/widgets/show_no_device_type_toast.dart';
+import 'package:game_store/features/home/presentation/widgets/device/show_no_device_type_toast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/submodel/customer_model.dart';

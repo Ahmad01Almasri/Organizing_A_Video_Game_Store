@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/styles.dart';
-import '../../../../../generated/l10n.dart';
-import '../../../data/models/device_model.dart';
-import '../../../data/models/submodel/customer_model.dart';
-import 'details_session_bottom_sheet.dart';
+import '../../../../../../core/theming/colors.dart';
+import '../../../../../../core/theming/styles.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../data/models/device_model.dart';
+import '../../../../data/models/submodel/customer_model.dart';
+import '../details/details_session_bottom_sheet.dart';
 
 class AddSessionButton extends StatefulWidget {
   const AddSessionButton({
