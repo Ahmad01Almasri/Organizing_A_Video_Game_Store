@@ -49,107 +49,103 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
   @override
   Widget build(BuildContext context) {
     String selectedDevice = widget.device.type;
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: AlertDialog(
-        title: Center(
-            child:
-                Text('تعديل العنصر', style: AppTextStyles.poppinsBoldstyle24)),
-        content: Form(
-          key: formstate,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CustomTextForm(
-                labelText: "اسم الجهاز",
-                controller: nameDeviceController,
-                validator: (text) {
-                  return AppConstants.validationNotEmpty(text);
-                },
-              ),
-              verticalSpace(15),
-              CustomTextForm(
-                readOnly: true,
-                suffixIcon: Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: DropdownButton<String>(
-                    items: AppConstants.deviceName.map((item) {
-                      return DropdownMenuItem<String>(
-                        value: item,
-                        child: Text(
-                          item,
-                          style: AppTextStyles.poppinsW500style15
-                              .copyWith(fontSize: 20),
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      setState(() {
-                        selectedDevice = value!;
-                        typeDeviceController.text = selectedDevice;
-                      });
-                    },
-                  ),
+    return AlertDialog(
+      title: Center(
+          child: Text('تعديل العنصر', style: AppTextStyles.poppinsBoldstyle24)),
+      content: Form(
+        key: formstate,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomTextForm(
+              labelText: "اسم الجهاز",
+              controller: nameDeviceController,
+              validator: (text) {
+                return AppConstants.validationNotEmpty(text);
+              },
+            ),
+            verticalSpace(15),
+            CustomTextForm(
+              readOnly: true,
+              suffixIcon: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: DropdownButton<String>(
+                  items: AppConstants.deviceName.map((item) {
+                    return DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(
+                        item,
+                        style: AppTextStyles.poppinsW500style15
+                            .copyWith(fontSize: 20),
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedDevice = value!;
+                      typeDeviceController.text = selectedDevice;
+                    });
+                  },
                 ),
-                labelText: "نوع الجهاز",
-                controller: typeDeviceController,
               ),
-              verticalSpace(15),
-              CustomTextForm(
-                labelText: "سعر الساعة",
-                controller: priceHourDeviceController,
-                keyboardType: TextInputType.number,
-                validator: (text) {
-                  return AppConstants.validationNotEmpty(text);
-                },
-              ),
-            ],
-          ),
+              labelText: "نوع الجهاز",
+              controller: typeDeviceController,
+            ),
+            verticalSpace(15),
+            CustomTextForm(
+              labelText: "سعر الساعة",
+              controller: priceHourDeviceController,
+              keyboardType: TextInputType.number,
+              validator: (text) {
+                return AppConstants.validationNotEmpty(text);
+              },
+            ),
+          ],
         ),
-        actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.black38.withOpacity(0.7)),
-                child: Text('إلغاء',
-                    style: AppTextStyles.poppinsw600style14
-                        .copyWith(color: AppColors.red)),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  if (formstate.currentState!.validate()) {
-                    final updatedDevice = widget.device;
-                    updatedDevice.name = nameDeviceController.text;
-                    updatedDevice.type = typeDeviceController.text;
-                    updatedDevice.price = priceHourDeviceController.text;
-                    updatedDevice.isAvailable = true;
-
-                    var deviceBox = Hive.box<DeviceModel>('devicesBox');
-                    if (updatedDevice.isInBox) {
-                      await updatedDevice.save();
-                    } else {
-                      await deviceBox.put(updatedDevice.key, updatedDevice);
-                    }
-
-                    context.read<DeviceCubit>().updateDevice(updatedDevice);
-                    Navigator.pop(context);
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.black38.withOpacity(0.7)),
-                child: Text('حفظ',
-                    style: AppTextStyles.poppinsw600style14
-                        .copyWith(color: AppColors.green)),
-              ),
-            ],
-          ),
-        ],
       ),
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.black38.withOpacity(0.7)),
+              child: Text('إلغاء',
+                  style: AppTextStyles.poppinsw600style14
+                      .copyWith(color: AppColors.red)),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                if (formstate.currentState!.validate()) {
+                  final updatedDevice = widget.device;
+                  updatedDevice.name = nameDeviceController.text;
+                  updatedDevice.type = typeDeviceController.text;
+                  updatedDevice.price = priceHourDeviceController.text;
+                  updatedDevice.isAvailable = true;
+
+                  var deviceBox = Hive.box<DeviceModel>('devicesBox');
+                  if (updatedDevice.isInBox) {
+                    await updatedDevice.save();
+                  } else {
+                    await deviceBox.put(updatedDevice.key, updatedDevice);
+                  }
+
+                  context.read<DeviceCubit>().updateDevice(updatedDevice);
+                  Navigator.pop(context);
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.black38.withOpacity(0.7)),
+              child: Text('حفظ',
+                  style: AppTextStyles.poppinsw600style14
+                      .copyWith(color: AppColors.green)),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

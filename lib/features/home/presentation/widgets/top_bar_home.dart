@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theming/styles.dart';
+import '../../../../generated/l10n.dart';
 
 class TopBarHome extends StatelessWidget {
   final Function(String) onFilterSelected;
@@ -16,7 +17,7 @@ class TopBarHome extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
-            "الأجهزة",
+            S.of(context).title,
             style: AppTextStyles.font20BlackBold.copyWith(fontSize: 30),
           ),
           PopupMenuButton<String>(
