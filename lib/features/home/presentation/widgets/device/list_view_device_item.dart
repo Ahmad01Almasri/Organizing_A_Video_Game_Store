@@ -15,6 +15,8 @@ class ListViewDevices extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
+          physics: BouncingScrollPhysics(), // تأكد من وجود فيزياء ملائمة
+
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           itemCount: devices.length,
           itemBuilder: (context, index) {

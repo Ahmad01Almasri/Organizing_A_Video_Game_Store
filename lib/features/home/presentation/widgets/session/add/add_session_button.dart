@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 
 import '../../../../../../core/theming/colors.dart';
@@ -30,7 +31,7 @@ class _AddSessionButtonState extends State<AddSessionButton> {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      height: 50,
+      height: 50.h,
       minWidth: double.infinity,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15))),

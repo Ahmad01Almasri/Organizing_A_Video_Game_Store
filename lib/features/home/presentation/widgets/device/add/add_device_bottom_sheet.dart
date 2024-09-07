@@ -13,42 +13,47 @@ Future<dynamic> showAddDeviceBottomSheet(
   final typeDeviceTextController = TextEditingController();
   final priceHourDeviceTextController = TextEditingController();
 
-  final FocusNode nameFocusNode = FocusNode();
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  final GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   return showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    builder: (_) => SingleChildScrollView(
-      child: Form(
-        key: formstate,
-        child: Padding(
-          padding: EdgeInsets.all(20.w),
-          child: Column(
-            children: [
-              FormTextFieldAddItem(
-                selectedDevice: selectedDevice,
-                nameDeviceController: nameDeviceTextController,
-                typeDeviceController: typeDeviceTextController,
-                priceHourDeviceController: priceHourDeviceTextController,
-              ),
-              verticalSpace(30),
-              SaveAddItemButton(
-                formstate: formstate,
-                nameDeviceController: nameDeviceTextController,
-                typeDeviceController: typeDeviceTextController,
-                priceHourDeviceController: priceHourDeviceTextController,
-              ),
-              verticalSpace(300),
-            ],
+    builder: (_) => Padding(
+      padding: EdgeInsets.only(
+        left: 20.w,
+        right: 20.w,
+        top: 20.w,
+        bottom: MediaQuery.of(context).viewInsets.bottom > 0 ? 300.h : 30.h,
+      ),
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          Form(
+            key: formstate,
+            child: Column(
+              children: [
+                FormTextFieldAddItem(
+                  selectedDevice: selectedDevice,
+                  nameDeviceController: nameDeviceTextController,
+                  typeDeviceController: typeDeviceTextController,
+                  priceHourDeviceController: priceHourDeviceTextController,
+                ),
+                verticalSpace(30),
+                SaveAddItemButton(
+                  formstate: formstate,
+                  nameDeviceController: nameDeviceTextController,
+                  typeDeviceController: typeDeviceTextController,
+                  priceHourDeviceController: priceHourDeviceTextController,
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     ),
   ).whenComplete(() {
     nameDeviceTextController.clear();
     typeDeviceTextController.clear();
     priceHourDeviceTextController.clear();
-    nameFocusNode.dispose();
   });
 }

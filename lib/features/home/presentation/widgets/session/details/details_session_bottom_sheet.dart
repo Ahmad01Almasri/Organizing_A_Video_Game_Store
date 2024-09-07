@@ -10,8 +10,8 @@ import 'row_action_details_session_bottom_sheet.dart';
 
 TimeOfDay? selectedTime = null;
 String customerName = "";
-Future<void> showDetailsSessionBottomSheet(
-    BuildContext context, bool isAvailable, DeviceModel device) async {
+Future<dynamic> showDetailsSessionBottomSheet(
+    BuildContext context, bool isAvailable, DeviceModel device) {
   final customerNameController =
       TextEditingController(text: device.customer?.name ?? "");
 
@@ -26,31 +26,43 @@ Future<void> showDetailsSessionBottomSheet(
   return showModalBottomSheet(
     isScrollControlled: true,
     context: context,
-    builder: (_) => SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(20.w),
-        child: Column(
+    builder: (context) {
+      return Padding(
+        padding: EdgeInsets.only(
+          left: 20.w,
+          right: 20.w,
+          top: 20.w,
+          bottom: MediaQuery.of(context).viewInsets.bottom > 0 ? 300.h : 30.h,
+        ),
+        child: ListView(
+          shrinkWrap: true,
           children: [
-            FormTextDetailsSession(
-              isAvailable: device.isAvailable,
-              formstate: formstate,
-              customerNameController: customerNameController,
-              customerTimeController: customerTimeController,
-            ),
-            verticalSpace(30),
-            isAvailable
-                ? AddSessionButton(
-                    formstate: formstate,
+            Form(
+              key: formstate,
+              child: Column(
+                children: [
+                  FormTextDetailsSession(
+                    isAvailable: device.isAvailable,
                     customerNameController: customerNameController,
-                    device: device,
-                  )
-                : DeletSessionActionButton(
-                    device: device,
+                    customerTimeController: customerTimeController,
                   ),
-            verticalSpace(290),
+                  verticalSpace(30),
+                  isAvailable
+                      ? AddSessionButton(
+                          formstate: formstate,
+                          customerNameController: customerNameController,
+                          device: device,
+                        )
+                      : DeletSessionActionButton(
+                          device: device,
+                        ),
+                  verticalSpace(30),
+                ],
+              ),
+            ),
           ],
         ),
-      ),
-    ),
+      );
+    },
   );
 }
