@@ -38,8 +38,7 @@ Future<void> showDetailsSessionBottomSheet(
                 isAvailable: device.isAvailable,
                 formstate: formstate,
                 customerNameController: customerNameController,
-                customerTimeController:
-                    customerTimeController, // عرض المؤقت المحدث
+                customerTimeController: customerTimeController,
               ),
               verticalSpace(30),
               isAvailable

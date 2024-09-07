@@ -63,12 +63,6 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
               ? TextButton(
                   onPressed: () async {
                     selectedTime = await showTimeSelectionDialog(context);
-                    if (selectedTime != null) {
-                      final selectedDateTime =
-                          DateTime(selectedTime!.hour, selectedTime!.minute);
-                      widget.customerTimeController.text =
-                          selectedDateTime.toString();
-                    }
                   },
                   child: Row(
                     children: [

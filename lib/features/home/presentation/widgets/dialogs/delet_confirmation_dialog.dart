@@ -10,7 +10,7 @@ Future<void> showDeleteDeviceConfirmationDialog(
     BuildContext context, DeviceModel device) async {
   return showDialog<void>(
     context: context,
-    barrierDismissible: true, // User must tap a button to confirm or cancel
+    barrierDismissible: true,
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text(
@@ -34,7 +34,7 @@ Future<void> showDeleteDeviceConfirmationDialog(
                     style: AppTextStyles.poppinsBoldstyle16
                         .copyWith(color: AppColors.green)),
                 onPressed: () {
-                  Navigator.of(context).pop(); // Close the dialog
+                  Navigator.of(context).pop();
                 },
               ),
               ElevatedButton(

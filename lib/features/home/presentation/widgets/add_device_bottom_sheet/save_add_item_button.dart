@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:game_store/injection_container.dart' as di;
 
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../data/models/device_model.dart';
 import '../../cubit/device_cubit.dart';
 
-class SaveAddItemButton extends StatefulWidget {
+class SaveAddItemButton extends StatelessWidget {
   final TextEditingController nameDeviceController;
   final TextEditingController typeDeviceController;
   final TextEditingController priceHourDeviceController;
@@ -22,11 +21,6 @@ class SaveAddItemButton extends StatefulWidget {
   });
 
   @override
-  State<SaveAddItemButton> createState() => _SaveAddItemButtonState();
-}
-
-class _SaveAddItemButtonState extends State<SaveAddItemButton> {
-  @override
   Widget build(BuildContext context) {
     return MaterialButton(
       height: 50,
@@ -34,11 +28,11 @@ class _SaveAddItemButtonState extends State<SaveAddItemButton> {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15))),
       onPressed: () {
-        if (widget.formstate.currentState!.validate()) {
+        if (formstate.currentState!.validate()) {
           final device = DeviceModel.create(
-            name: widget.nameDeviceController.text,
-            type: widget.typeDeviceController.text,
-            price: widget.priceHourDeviceController.text,
+            name: nameDeviceController.text,
+            type: typeDeviceController.text,
+            price: priceHourDeviceController.text,
             isAvailable: true,
           );
           context.read<DeviceCubit>().addDevice(device);

@@ -7,8 +7,6 @@ import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../data/models/device_model.dart';
 import '../../../data/models/submodel/customer_model.dart';
-import '../../../data/sources/local_device_data_source.dart';
-import '../../cubit/device_state.dart';
 import 'details_session_bottom_sheet.dart';
 
 class AddSessionButton extends StatefulWidget {
@@ -51,8 +49,11 @@ class _AddSessionButtonState extends State<AddSessionButton> {
           if (selectedTime != null) {
             customerName = widget.customerNameController.text;
 
+            final selectedDateTime = DateTime(selectedTime!.minute);
+
             if (customerName.isNotEmpty) {
               final customer = CustomerModel.create(
+                selectedTime: selectedDateTime,
                 name: customerName,
               );
 

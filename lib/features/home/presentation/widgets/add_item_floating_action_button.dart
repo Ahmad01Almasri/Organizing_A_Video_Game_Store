@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theming/colors.dart';
-import '../cubit/device_cubit.dart';
 import 'add_device_bottom_sheet/add_device_bottom_sheet.dart';
 
 class AddItemButton extends StatelessWidget {

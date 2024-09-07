@@ -1,10 +1,10 @@
-import 'dart:async';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../../data/models/submodel/customer_model.dart';
 import '../../data/sources/local_device_data_source.dart';
+import '../pages/home_page.dart';
 import 'device_state.dart';
 
 class DeviceCubit extends Cubit<DeviceState> {
@@ -58,7 +58,7 @@ class DeviceCubit extends Cubit<DeviceState> {
 
         await updatedDevice.save();
       } else {
-        await deviceBox.put(updatedDevice.key, updatedDevice);
+        await deviceBox.put(updatedDevice.id, updatedDevice);
       }
       updateDevice(updatedDevice);
     } catch (e) {
@@ -70,7 +70,7 @@ class DeviceCubit extends Cubit<DeviceState> {
 
         await updatedDevice.save();
       } else {
-        await deviceBox.put(updatedDevice.key, updatedDevice);
+        await deviceBox.put(updatedDevice.id, updatedDevice);
       }
       updateDevice(updatedDevice);
     }
@@ -83,9 +83,24 @@ class DeviceCubit extends Cubit<DeviceState> {
 
     return "$hours:$minutes";
   }
-}
 
-class TimerUpdated extends DeviceState {
-  final int seconds;
-  TimerUpdated(this.seconds);
+  void filterDevicesByType(BuildContext context, String type) {
+    final allDevices =
+        LocalDeviceDataSource.listenToDevices().value.values.toList();
+
+    if (type == "كل الأجهزة") {
+      emit(DeviceLoaded(allDevices));
+    } else {
+      final filteredDevices =
+          allDevices.where((device) => device.type == type).toList();
+
+      if (filteredDevices.isEmpty) {
+        // إظهار توست في حالة عدم وجود أجهزة من النوع المختار
+        showCustomToast(context, "لا يوجد أجهزة من النوع المختار");
+        emit(DeviceLoaded(allDevices)); // عرض كل الأجهزة في حال الفلترة الفارغة
+      } else {
+        emit(DeviceLoaded(filteredDevices));
+      }
+    }
+  }
 }
