@@ -4,6 +4,7 @@ import 'package:game_store/core/theming/styles.dart';
 import '../../../../../core/helpers/app_constants.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/widget/custom_text_field.dart';
+import '../../../../../generated/l10n.dart';
 import '../dialogs/select_time_dialogs.dart';
 import 'details_session_bottom_sheet.dart';
 
@@ -51,10 +52,10 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTextForm(
-            labelText: "اسم الزبون",
+            labelText: S.of(context).device_name,
             controller: widget.customerNameController,
             validator: (text) {
-              return AppConstants.validationNotEmpty(text);
+              return AppConstants.validationNotEmpty(context, text);
             },
             readOnly: !widget.isAvailable,
           ),
@@ -72,7 +73,7 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
                       ),
                       horizontalSpace(10),
                       Text(
-                        "ضبط تذكير",
+                        S.of(context).set_reminder,
                         style: AppTextStyles.font18DarkBlueSemiBold
                             .copyWith(color: AppColors.primaryColor),
                       ),
@@ -80,7 +81,7 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
                   ),
                 )
               : CustomTextForm(
-                  labelText: "الوقت",
+                  labelText: S.of(context).time,
                   controller: widget.customerTimeController,
                   readOnly: true,
                 ),

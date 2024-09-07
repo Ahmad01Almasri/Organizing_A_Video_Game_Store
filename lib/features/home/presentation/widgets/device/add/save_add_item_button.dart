@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/device_model.dart';
 import '../../cubit/device_cubit.dart';
 
@@ -42,7 +43,7 @@ class SaveAddItemButton extends StatelessWidget {
       },
       color: AppColors.primaryColor,
       child: Text(
-        "حفظ",
+        S.of(context).save,
         style: AppTextStyles.font17WhiteMedium,
       ),
     );

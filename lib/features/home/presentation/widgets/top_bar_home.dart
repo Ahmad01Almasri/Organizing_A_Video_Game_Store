@@ -29,21 +29,21 @@ class TopBarHome extends StatelessWidget {
               size: 30,
             ),
             itemBuilder: (context) => [
-              const PopupMenuItem(
-                value: "كل الأجهزة",
-                child: Text("كل الأجهزة"),
+              PopupMenuItem(
+                value: S.of(context).all_devices,
+                child: Text(S.of(context).all_devices),
               ),
-              const PopupMenuItem(
-                value: "لابتوب",
-                child: Text("لابتوب"),
+              PopupMenuItem(
+                value: S.of(context).laptop,
+                child: Text(S.of(context).laptop),
               ),
-              const PopupMenuItem(
-                value: "حاسب",
-                child: Text("حاسب"),
+              PopupMenuItem(
+                value: S.of(context).computer,
+                child: Text(S.of(context).computer),
               ),
-              const PopupMenuItem(
-                value: "بلايستيشن",
-                child: Text("بلايستيشن"),
+              PopupMenuItem(
+                value: S.of(context).playstation,
+                child: Text(S.of(context).playstation),
               ),
             ],
           ),

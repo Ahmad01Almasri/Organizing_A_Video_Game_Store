@@ -5,6 +5,7 @@ import 'package:game_store/features/home/data/models/device_model.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/sources/local_device_data_source.dart';
 import '../../cubit/device_cubit.dart';
 import '../dialogs/closed_session_dialog.dart';
@@ -12,7 +13,7 @@ import 'action_button.dart';
 
 class DeletSessionActionButton extends StatefulWidget {
   final DeviceModel device;
-  DeletSessionActionButton({
+  const DeletSessionActionButton({
     super.key,
     required this.device,
   });
@@ -30,7 +31,7 @@ class _DeletSessionActionButtonState extends State<DeletSessionActionButton> {
       children: [
         ActionButton(
             backgroundColor: AppColors.primaryColor,
-            textNameButton: "إغلاق الجلسة",
+            textNameButton: S.of(context).end_session,
             textNamestyle: AppTextStyles.poppinsBoldstyle16,
             onPressed: () {
               showClosedSessionDialog(context, widget.device);
@@ -44,7 +45,7 @@ class _DeletSessionActionButtonState extends State<DeletSessionActionButton> {
         horizontalSpace(10),
         ActionButton(
             borderColor: AppColors.red,
-            textNameButton: "عودة",
+            textNameButton: S.of(context).back,
             textNamestyle:
                 AppTextStyles.poppinsBoldstyle16.copyWith(color: AppColors.red),
             onPressed: () {

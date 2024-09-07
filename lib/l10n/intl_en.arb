@@ -1,4 +1,31 @@
 {
+    "title": "The Devices",
+    "laptop": "Laptop",
+    "playstation": "PlayStation",
+    "computer": "Computer",
+    "field_required": "The field cannot be left empty",
+    "no_devices": "No devices of the selected type",
+    "all_devices": "All devices",
+    "device_name": "Device Name",
+    "device_type": "Device Type",
+    "hourly_rate": "Hourly Rate",
+    "save": "Save",
+    "customer_name": "Customer Name",
+    "set_reminder": "Set Reminder",
+    "time": "Time",
+    "end_session": "End Session",
+    "back": "Back",
+    "session_closed": "Session Closed",
+    "customer_account": "Customer Account: ",
+    "currency": "SYP",
+    "close": "Close",
+    "confirm_delete_device": "Confirm Device Deletion",
+    "delete_confirmation": "Are you sure you want to delete the device?",
+    "delete": "Delete",
+    "edit_item": "Edit Item",
+    "ok": "OK",
+    "choose_time": "Choose Time",
+    "add_device": "Add Device",
+    "cancel":"cancel"
 
-    "title":"The Devices "
 }

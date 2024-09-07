@@ -1,4 +1,30 @@
 {
-    "title":"الأجهزة"
-
+    "title": "الأجهزة",
+    "laptop": "لابتوب",
+    "playstation": "بلايستيشن",
+    "computer": "حاسب",
+    "field_required": "لا يمكن ترك الحقل فارغ",
+    "no_devices": "لا يوجد أجهزة من النوع المختار",
+    "all_devices": "كل الأجهزة",
+    "device_name": "اسم الجهاز",
+    "device_type": "نوع الجهاز",
+    "hourly_rate": "سعر الساعة",
+    "save": "حفظ",
+    "customer_name": "اسم الزبون",
+    "set_reminder": "ضبط تذكير",
+    "time": "الوقت",
+    "end_session": "إغلاق الجلسة",
+    "back": "عودة",
+    "session_closed": "تم إغلاق الجلسة",
+    "customer_account": "حساب الزبون: ",
+    "currency": "ل.س",
+    "close": "إغلاق",
+    "confirm_delete_device": "تأكيد حذف الجهاز",
+    "delete_confirmation": "هل انت متأكد من حذف الجهاز",
+    "delete": "حذف",
+    "edit_item": "تعديل العنصر",
+    "ok": "حسناً",
+    "choose_time": "اختيار الوقت",
+    "add_device": "أضف جهاز",
+    "cancel":"إغلاق"
 }

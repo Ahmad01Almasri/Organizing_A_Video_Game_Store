@@ -48,10 +48,7 @@ class MyThemeTimePicker extends StatelessWidget {
           dayPeriodColor: AppColors.primaryColor,
         ),
       ),
-      child: Directionality(
-        textDirection: TextDirection.rtl, // Keep text direction as RTL
-        child: child!,
-      ),
+      child: child!,
     );
   }
 }

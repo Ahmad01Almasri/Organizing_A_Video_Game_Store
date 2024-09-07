@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/helpers/app_constants.dart';
+import '../../../../../core/helpers/app_functions.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widget/custom_text_field.dart';
-import '../../../../../game_video_store_app.dart';
 
 class FormTextFieldAddItem extends StatefulWidget {
   String selectedDevice;
@@ -12,12 +12,12 @@ class FormTextFieldAddItem extends StatefulWidget {
   final TextEditingController priceHourDeviceController;
 
   FormTextFieldAddItem({
-    Key? key,
+    super.key,
     required this.selectedDevice,
     required this.nameDeviceController,
     required this.typeDeviceController,
     required this.priceHourDeviceController,
-  }) : super(key: key);
+  });
 
   @override
   _FormTextFieldAddItemState createState() => _FormTextFieldAddItemState();
@@ -51,7 +51,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
           controller: widget.nameDeviceController,
           focusNode: _nameFocusNode,
           validator: (text) {
-            return AppConstants.validationNotEmpty(text);
+            return AppConstants.validationNotEmpty(context, text);
           },
         ),
         verticalSpace(15),
@@ -61,7 +61,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
             padding: EdgeInsets.only(
                 left: IsArabic() ? 10 : 0, right: IsArabic() ? 0 : 16),
             child: DropdownButton<String>(
-              items: AppConstants.deviceName.map((item) {
+              items: AppConstants.deviceName(context).map((item) {
                 return DropdownMenuItem<String>(
                   value: item,
                   child: Text(
@@ -88,7 +88,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
           controller: widget.priceHourDeviceController,
           keyboardType: TextInputType.number,
           validator: (text) {
-            return AppConstants.validationNotEmpty(text);
+            return AppConstants.validationNotEmpty(context, text);
           },
         ),
       ],

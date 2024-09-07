@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
+import 'package:game_store/features/home/presentation/widgets/show_no_device_type_toast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import '../../../../generated/l10n.dart';
 import '../../data/models/submodel/customer_model.dart';
 import '../../data/sources/local_device_data_source.dart';
-import '../pages/home_page.dart';
 import 'device_state.dart';
 
 class DeviceCubit extends Cubit<DeviceState> {
@@ -88,16 +89,15 @@ class DeviceCubit extends Cubit<DeviceState> {
     final allDevices =
         LocalDeviceDataSource.listenToDevices().value.values.toList();
 
-    if (type == "كل الأجهزة") {
+    if (type == S.of(context).all_devices) {
       emit(DeviceLoaded(allDevices));
     } else {
       final filteredDevices =
           allDevices.where((device) => device.type == type).toList();
 
       if (filteredDevices.isEmpty) {
-        // إظهار توست في حالة عدم وجود أجهزة من النوع المختار
-        showCustomToast(context, "لا يوجد أجهزة من النوع المختار");
-        emit(DeviceLoaded(allDevices)); // عرض كل الأجهزة في حال الفلترة الفارغة
+        showNoDeviceTypeToast(context, S.of(context).no_devices);
+        emit(DeviceLoaded(allDevices));
       } else {
         emit(DeviceLoaded(filteredDevices));
       }

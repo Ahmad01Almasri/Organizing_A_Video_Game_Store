@@ -22,6 +22,39 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "title": MessageLookupByLibrary.simpleMessage("The Devices ")
+        "add_device": MessageLookupByLibrary.simpleMessage("Add Device"),
+        "all_devices": MessageLookupByLibrary.simpleMessage("All devices"),
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
+        "choose_time": MessageLookupByLibrary.simpleMessage("Choose Time"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
+        "computer": MessageLookupByLibrary.simpleMessage("Computer"),
+        "confirm_delete_device":
+            MessageLookupByLibrary.simpleMessage("Confirm Device Deletion"),
+        "currency": MessageLookupByLibrary.simpleMessage("SYP"),
+        "customer_account":
+            MessageLookupByLibrary.simpleMessage("Customer Account: "),
+        "customer_name": MessageLookupByLibrary.simpleMessage("Customer Name"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "delete_confirmation": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete the device?"),
+        "device_name": MessageLookupByLibrary.simpleMessage("Device Name"),
+        "device_type": MessageLookupByLibrary.simpleMessage("Device Type"),
+        "edit_item": MessageLookupByLibrary.simpleMessage("Edit Item"),
+        "end_session": MessageLookupByLibrary.simpleMessage("End Session"),
+        "field_required": MessageLookupByLibrary.simpleMessage(
+            "The field cannot be left empty"),
+        "hourly_rate": MessageLookupByLibrary.simpleMessage("Hourly Rate"),
+        "laptop": MessageLookupByLibrary.simpleMessage("Laptop"),
+        "no_devices": MessageLookupByLibrary.simpleMessage(
+            "No devices of the selected type"),
+        "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "playstation": MessageLookupByLibrary.simpleMessage("PlayStation"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "session_closed":
+            MessageLookupByLibrary.simpleMessage("Session Closed"),
+        "set_reminder": MessageLookupByLibrary.simpleMessage("Set Reminder"),
+        "time": MessageLookupByLibrary.simpleMessage("Time"),
+        "title": MessageLookupByLibrary.simpleMessage("The Devices")
       };
 }

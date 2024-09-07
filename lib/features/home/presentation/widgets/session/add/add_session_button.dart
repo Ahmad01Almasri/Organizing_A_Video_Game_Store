@@ -1,10 +1,10 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/device_model.dart';
 import '../../../data/models/submodel/customer_model.dart';
 import 'details_session_bottom_sheet.dart';
@@ -27,16 +27,6 @@ class AddSessionButton extends StatefulWidget {
 
 class _AddSessionButtonState extends State<AddSessionButton> {
   int counter = 0;
-  // void startTimer() {
-  //   Timer.periodic(Duration(seconds: 1), (timer) {
-  //     print(timer.tick);
-  //     setState(() {
-  //       counter++;
-  //       widget.device.customer?.usageTime = counter;
-  //     });
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -69,7 +59,7 @@ class _AddSessionButtonState extends State<AddSessionButton> {
       },
       color: AppColors.primaryColor,
       child: Text(
-        "حفظ",
+        S.of(context).save,
         style: AppTextStyles.font17WhiteMedium,
       ),
     );

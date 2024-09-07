@@ -8,9 +8,10 @@ import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../../core/helpers/app_constants.dart';
+import '../../../../../core/helpers/app_functions.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/widget/custom_text_field.dart';
-import '../../../../../game_video_store_app.dart';
+import '../../../../../generated/l10n.dart';
 
 class EditDeviceDialog extends StatefulWidget {
   final DeviceModel device;
@@ -53,17 +54,18 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
     String selectedDevice = widget.device.type;
     return AlertDialog(
       title: Center(
-          child: Text('تعديل العنصر', style: AppTextStyles.poppinsBoldstyle24)),
+          child: Text(S.of(context).edit_item,
+              style: AppTextStyles.poppinsBoldstyle24)),
       content: Form(
         key: formstate,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             CustomTextForm(
-              labelText: "اسم الجهاز",
+              labelText: S.of(context).device_name,
               controller: nameDeviceController,
               validator: (text) {
-                return AppConstants.validationNotEmpty(text);
+                return AppConstants.validationNotEmpty(context, text);
               },
             ),
             verticalSpace(15),
@@ -73,7 +75,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
                 padding: EdgeInsets.only(
                     left: IsArabic() ? 10.h : 0, right: IsArabic() ? 0 : 10.h),
                 child: DropdownButton<String>(
-                  items: AppConstants.deviceName.map((item) {
+                  items: AppConstants.deviceName(context).map((item) {
                     return DropdownMenuItem<String>(
                       value: item,
                       child: Text(
@@ -91,16 +93,16 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
                   },
                 ),
               ),
-              labelText: "نوع الجهاز",
+              labelText: S.of(context).device_type,
               controller: typeDeviceController,
             ),
             verticalSpace(15),
             CustomTextForm(
-              labelText: "سعر الساعة",
+              labelText: S.of(context).hourly_rate,
               controller: priceHourDeviceController,
               keyboardType: TextInputType.number,
               validator: (text) {
-                return AppConstants.validationNotEmpty(text);
+                return AppConstants.validationNotEmpty(context, text);
               },
             ),
           ],

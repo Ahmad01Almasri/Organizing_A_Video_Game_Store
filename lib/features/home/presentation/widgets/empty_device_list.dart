@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:game_store/core/helpers/spacing.dart';
 import 'package:game_store/core/theming/styles.dart';
+
+import '../../../../generated/l10n.dart';
 
 class EmptyDeviceListWidget extends StatelessWidget {
   const EmptyDeviceListWidget({
@@ -13,10 +14,10 @@ class EmptyDeviceListWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "أضف جهاز ",
+          S.of(context).add_device,
           style: AppTextStyles.font35BlackBold,
         ),
-        Center(child: Icon(Icons.format_list_bulleted_add, size: 250)),
+        const Center(child: Icon(Icons.format_list_bulleted_add, size: 250)),
       ],
     );
   }
