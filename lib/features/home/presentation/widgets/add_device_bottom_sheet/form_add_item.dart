@@ -3,6 +3,7 @@ import '../../../../../core/helpers/app_constants.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../core/widget/custom_text_field.dart';
+import '../../../../../game_video_store_app.dart';
 
 class FormTextFieldAddItem extends StatefulWidget {
   String selectedDevice;
@@ -57,7 +58,8 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
         CustomTextForm(
           readOnly: true,
           suffixIcon: Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: EdgeInsets.only(
+                left: IsArabic() ? 10 : 0, right: IsArabic() ? 0 : 16),
             child: DropdownButton<String>(
               items: AppConstants.deviceName.map((item) {
                 return DropdownMenuItem<String>(

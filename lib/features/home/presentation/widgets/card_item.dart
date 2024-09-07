@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../../../../core/helpers/app_functions.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
+import '../../../../game_video_store_app.dart';
 import '../../data/models/device_model.dart';
 import 'details_session_bottom_sheet_/details_session_bottom_sheet.dart';
 import 'dialogs/delet_confirmation_dialog.dart';
@@ -69,11 +71,10 @@ class CardItem extends StatelessWidget {
                 child: Card(
                   child: Padding(
                     padding: EdgeInsets.only(
-                      bottom: 7.h,
-                      top: 7.h,
-                      left: 20.w,
-                      right: 14.w,
-                    ),
+                        bottom: 7.h,
+                        top: 7.h,
+                        left: IsArabic() ? 20.h : 14.h,
+                        right: IsArabic() ? 14.h : 20.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -131,11 +132,10 @@ class CardItem extends StatelessWidget {
               child: Card(
                 child: Padding(
                   padding: EdgeInsets.only(
-                    bottom: 7.h,
-                    top: 7.h,
-                    left: 20.w,
-                    right: 14.w,
-                  ),
+                      bottom: 7.h,
+                      top: 7.h,
+                      left: IsArabic() ? 20.h : 14.h,
+                      right: IsArabic() ? 14.h : 20.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

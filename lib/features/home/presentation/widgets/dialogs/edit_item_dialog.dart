@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/core/theming/colors.dart';
 import 'package:game_store/core/theming/styles.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
@@ -9,6 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../../../core/helpers/app_constants.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/widget/custom_text_field.dart';
+import '../../../../../game_video_store_app.dart';
 
 class EditDeviceDialog extends StatefulWidget {
   final DeviceModel device;
@@ -68,7 +70,8 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
             CustomTextForm(
               readOnly: true,
               suffixIcon: Padding(
-                padding: const EdgeInsets.only(left: 10),
+                padding: EdgeInsets.only(
+                    left: IsArabic() ? 10.h : 0, right: IsArabic() ? 0 : 10.h),
                 child: DropdownButton<String>(
                   items: AppConstants.deviceName.map((item) {
                     return DropdownMenuItem<String>(
