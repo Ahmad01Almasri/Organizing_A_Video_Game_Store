@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 
+import '../../../../../../core/services/notification_services.dart';
 import '../../../../../../core/theming/colors.dart';
 import '../../../../../../core/theming/styles.dart';
 import '../../../../../../generated/l10n.dart';
@@ -37,24 +38,28 @@ class _AddSessionButtonState extends State<AddSessionButton> {
           borderRadius: BorderRadius.all(Radius.circular(15))),
       onPressed: () async {
         if (widget.formstate.currentState!.validate()) {
+          DateTime? selectedDateTime;
           if (selectedTime != null) {
-            customerName = widget.customerNameController.text;
+            selectedDateTime = DateTime(selectedTime!.minute);
+            NotificationService.scheduleNotification(
+              0, // يمكن استخدام معرف فريد لكل إشعار
+              'تذكير بالوقت',
+              'تذكر الوقت الذي حددته: ${selectedTime!.format(context)}',
+              selectedDateTime,
+            );
+          }
+          customerName = widget.customerNameController.text;
 
-            final selectedDateTime = DateTime(selectedTime!.minute);
+          if (customerName.isNotEmpty) {
+            final customer = CustomerModel.create(
+              selectedTime: selectedDateTime,
+              name: customerName,
+            );
 
-            if (customerName.isNotEmpty) {
-              final customer = CustomerModel.create(
-                selectedTime: selectedDateTime,
-                name: customerName,
-              );
+            widget.device.setCustomer(customer);
+            context.read<DeviceCubit>().toggleDeviceAvailability(widget.device);
 
-              widget.device.setCustomer(customer);
-              context
-                  .read<DeviceCubit>()
-                  .toggleDeviceAvailability(widget.device);
-
-              Navigator.pop(context);
-            }
+            Navigator.pop(context);
           }
         }
       },

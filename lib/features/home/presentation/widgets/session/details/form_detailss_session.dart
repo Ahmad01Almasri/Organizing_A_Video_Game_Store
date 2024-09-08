@@ -48,7 +48,7 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomTextForm(
-          labelText: S.of(context).device_name,
+          labelText: S.of(context).customer_name,
           controller: widget.customerNameController,
           focusNode: _nameFocusNode,
           validator: (text) {

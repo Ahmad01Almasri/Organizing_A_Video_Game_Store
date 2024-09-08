@@ -48,6 +48,8 @@ dependencies:
   flutter_countdown_timer: ^4.1.0
   flutter_localizations:
     sdk: flutter
+  flutter_local_notifications: ^17.2.2
+  timezone: ^0.9.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

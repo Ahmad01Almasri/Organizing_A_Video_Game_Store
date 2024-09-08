@@ -6,7 +6,7 @@ import 'font_weight_helper.dart';
 
 class AppTextStyles {
   static TextStyle font24BlackBold = TextStyle(
-    fontSize: 24.sp,
+    fontSize: 24,
     fontWeight: AppFontWeight.bold,
     color: Colors.black,
   );

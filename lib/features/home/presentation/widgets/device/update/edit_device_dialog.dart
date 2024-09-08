@@ -118,7 +118,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.black38.withOpacity(0.7)),
-              child: Text('إلغاء',
+              child: Text(S.of(context).cancel,
                   style: AppTextStyles.poppinsw600style14
                       .copyWith(color: AppColors.red)),
             ),
@@ -144,7 +144,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.black38.withOpacity(0.7)),
-              child: Text('حفظ',
+              child: Text(S.of(context).save,
                   style: AppTextStyles.poppinsw600style14
                       .copyWith(color: AppColors.green)),
             ),

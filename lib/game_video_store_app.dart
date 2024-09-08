@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_store/core/theming/theme_date_var.dart';
 
-import 'core/helpers/app_strings.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/theming/colors.dart';
@@ -19,7 +19,7 @@ class GameStoreApp extends StatelessWidget {
         designSize: const Size(375, 812),
         minTextAdapt: true,
         child: MaterialApp(
-          locale: Locale('ar'),
+          locale: const Locale('en'),
           localizationsDelegates: const [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -27,13 +27,22 @@ class GameStoreApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: S.delegate.supportedLocales,
-          theme: ThemeData(
+          theme: ThemeData.light().copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: AppColors
+                  .white, // Set the color of the selected time and OK button (main color)
+            ),
+            buttonTheme: const ButtonThemeData(
+              colorScheme: ColorScheme.light(
+                primary: AppColors.primaryColor, // OK button background color
+              ),
+            ),
+            timePickerTheme: AppThemeData.mytimePickerThemeData,
             textSelectionTheme: const TextSelectionThemeData(
               cursorColor: AppColors.primaryColor,
             ),
             primaryColor: AppColors.primaryColor,
             scaffoldBackgroundColor: AppColors.white,
-            fontFamily: AppStrings.appFont,
           ),
           debugShowCheckedModeBanner: false,
           initialRoute: Routes.homeScreen,

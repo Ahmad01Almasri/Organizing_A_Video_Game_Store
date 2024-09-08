@@ -32,6 +32,6 @@ class CustomerModel extends HiveObject {
         id: const Uuid().v1(),
         name: name ?? "",
         createdAt: DateTime.now(),
-        selectedTime: selectedTime ?? DateTime.now(),
+        selectedTime: selectedTime,
       );
 }
