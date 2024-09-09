@@ -11,8 +11,5 @@ abstract class AppConstants {
     ];
   }
 
-  static String? validationNotEmpty(BuildContext context, String? value) {
-    if ((value ?? '').isEmpty) return S.of(context).field_required;
-    return null;
-  }
+
 }

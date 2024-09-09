@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_store/core/theming/colors.dart';
 import 'package:game_store/core/theming/styles.dart';
-import '../../../../../../core/helpers/app_constants.dart';
+import '../../../../../../core/helpers/app_functions.dart';
 import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/widget/custom_text_field.dart';
 import '../../../../../../generated/l10n.dart';
@@ -52,7 +52,7 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
           controller: widget.customerNameController,
           focusNode: _nameFocusNode,
           validator: (text) {
-            return AppConstants.validationNotEmpty(context, text);
+            return AppFunctions.validationNotEmpty(context, text);
           },
           readOnly: !widget.isAvailable,
         ),
