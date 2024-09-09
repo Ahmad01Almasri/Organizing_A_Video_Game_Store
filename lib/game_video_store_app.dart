@@ -3,7 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/core/theming/theme_date_var.dart';
-
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/theming/colors.dart';

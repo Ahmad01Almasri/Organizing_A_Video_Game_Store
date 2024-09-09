@@ -4,7 +4,7 @@ import 'package:game_store/features/home/data/models/device_model.dart';
 import 'package:game_store/features/home/presentation/widgets/device/show_no_device_type_toast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../../../../generated/l10n.dart';
-import '../../data/models/submodel/customer_model.dart';
+import '../../data/models/customer_model.dart';
 import '../../data/sources/local_device_data_source.dart';
 import 'device_state.dart';
 

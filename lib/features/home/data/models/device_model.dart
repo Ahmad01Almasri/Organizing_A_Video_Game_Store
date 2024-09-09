@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
-import 'submodel/customer_model.dart';
+import 'customer_model.dart';
 
 part 'device_model.g.dart';
 

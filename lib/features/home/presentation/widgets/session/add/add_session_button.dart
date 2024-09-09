@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
-
-import '../../../../../../core/services/notification_services.dart';
 import '../../../../../../core/theming/colors.dart';
 import '../../../../../../core/theming/styles.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../data/models/device_model.dart';
-import '../../../../data/models/submodel/customer_model.dart';
+import '../../../../data/models/customer_model.dart';
 import '../details/details_session_bottom_sheet.dart';
 
 class AddSessionButton extends StatefulWidget {
@@ -40,13 +38,22 @@ class _AddSessionButtonState extends State<AddSessionButton> {
         if (widget.formstate.currentState!.validate()) {
           DateTime? selectedDateTime;
           if (selectedTime != null) {
+            print("{::::::::::::::::::::::::::::::$selectedTime}");
+            selectedDateTime = DateTime(
+                DateTime.now().year,
+                DateTime.now().month,
+                DateTime.now().day,
+                selectedTime!.hour,
+                selectedTime!.minute);
+            print("{::::::::::::::::::::::::::::::$selectedDateTime}");
+            // Schedule notification
+            //       await NotificationService().scheduleNotification(
+            //     dateTime: DateTime.now().add(Duration(seconds: 120)),
+            //     id: 1,
+            //     title: "إشعار مجدول",
+            //     body: "تم إرسال الإشعار بعد 120 ثانية");
+            // print(DateTime.now());
             selectedDateTime = DateTime(selectedTime!.minute);
-            NotificationService.scheduleNotification(
-              0, // يمكن استخدام معرف فريد لكل إشعار
-              'تذكير بالوقت',
-              'تذكر الوقت الذي حددته: ${selectedTime!.format(context)}',
-              selectedDateTime,
-            );
           }
           customerName = widget.customerNameController.text;
 

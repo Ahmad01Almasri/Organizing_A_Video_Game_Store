@@ -1,94 +1,142 @@
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/timezone.dart' as tz;
+// import 'dart:io';
 
-class NotificationService {
-  static final FlutterLocalNotificationsPlugin _notificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+// import 'package:flutter/material.dart';
+// import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+// import 'package:timezone/timezone.dart' as tz;
 
-  static Future<void> initialize() async {
-    const initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
-    const initializationSettings = InitializationSettings(
-      android: initializationSettingsAndroid,
-    );
+// class NotificationService {
+//   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+//       FlutterLocalNotificationsPlugin();
 
-    await _notificationsPlugin.initialize(initializationSettings);
-  }
+//   Future<void> initNotification() async {
+//     const AndroidInitializationSettings initializationSettingsAndroid =
+//         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-  static Future<void> scheduleNotification(
-      int id, String title, String body, DateTime scheduledDate) async {
-    const androidDetails = AndroidNotificationDetails(
-      'channel_id', // تأكد من تطابق هذه القيم مع إعدادات القناة
-      'channel_name',
-      channelDescription: 'description',
-      importance: Importance.max,
-      priority: Priority.high,
-      fullScreenIntent: true, // هذا يعرض الإشعار كنافذة كاملة
-    );
+//     final DarwinInitializationSettings initializationSettingsIOS =
+//         DarwinInitializationSettings(
+//       requestAlertPermission: true,
+//       requestBadgePermission: true,
+//       requestSoundPermission: true,
+//       onDidReceiveLocalNotification:
+//           (int id, String? title, String? body, String? payload) async {},
+//     );
 
-    const notificationDetails = NotificationDetails(
-      android: androidDetails,
-    );
+//     final InitializationSettings initializationSettings =
+//         InitializationSettings(
+//       android: initializationSettingsAndroid,
+//       iOS: initializationSettingsIOS,
+//     );
 
-    // تحويل DateTime إلى TZDateTime
-    final tzDateTime = tz.TZDateTime.from(scheduledDate, tz.local);
+//     await flutterLocalNotificationsPlugin.initialize(
+//       initializationSettings,
+//       onDidReceiveNotificationResponse:
+//           (NotificationResponse notificationResponse) async {},
+//     );
+//   }
 
-    await _notificationsPlugin.zonedSchedule(
-      id,
-      title,
-      body,
-      tzDateTime,
-      notificationDetails,
-      androidAllowWhileIdle: true,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-    );
-  }
-}
-// <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-//     <application
-//         android:label="game_store"
-//         android:name="${applicationName}"
-//         android:icon="@mipmap/ic_launcher">
-//         <activity
-//             android:name=".MainActivity"
-//             android:exported="true"
-//             android:launchMode="singleTop"
-//             android:theme="@style/LaunchTheme"
-//             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-//             android:hardwareAccelerated="true"
-//             android:windowSoftInputMode="adjustResize">
-//             <!-- Specifies an Android theme to apply to this Activity as soon as
-//                  the Android process has started. This theme is visible to the user
-//                  while the Flutter UI initializes. After that, this theme continues
-//                  to determine the Window background behind the Flutter UI. -->
-//             <meta-data
-//               android:name="io.flutter.embedding.android.NormalTheme"
-//               android:resource="@style/NormalTheme"
-//               />
-//             <intent-filter>
-//                 <action android:name="android.intent.action.MAIN"/>
-//                 <category android:name="android.intent.category.LAUNCHER"/>
-//             </intent-filter>
-//         </activity>
-//         <!-- Don't delete the meta-data below.
-//              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
-//         <meta-data
-//             android:name="flutterEmbedding"
-//             android:value="2" />
-//     </application>
-//     <!-- Required to query activities that can process text, see:
-//          https://developer.android.com/training/package-visibility?hl=en and
-//          https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+//   Future<NotificationDetails> notificationDetails() async {
+//     return const NotificationDetails(
+//       android: AndroidNotificationDetails(
+//         'channelId',
+//         'channelName',
+//         channelDescription: 'channelDescription',
+//         importance: Importance.max,
+//         priority: Priority.high,
+//         icon: '@mipmap/ic_launcher',
+//       ),
+//       iOS: DarwinNotificationDetails(),
+//     );
+//   }
 
-//          In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
-//     <queries>
-//         <intent>
-//             <action android:name="android.intent.action.PROCESS_TEXT"/>
-//             <data android:mimeType="text/plain"/>
-//         </intent>
-//     </queries>
-//        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-//        <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+//   Future<void> showNotification({
+//     int id = 0,
+//     String? title,
+//     String? body,
+//     String? payload,
+//   }) async {
+//     return flutterLocalNotificationsPlugin.show(
+//       id,
+//       title,
+//       body,
+//       await notificationDetails(),
+//     );
+//   }
 
-// </manifest>
+//   Future<void> scheduleNotification({
+//     required DateTime dateTime,
+//     required int id,
+//     String? title,
+//     String? body,
+//     String? payload,
+//     String? customSound,
+//     DateTimeComponents? matchDateTimeComponents,
+//   }) async {
+//     await flutterLocalNotificationsPlugin.zonedSchedule(
+//       id,
+//       title,
+//       body,
+//       tz.TZDateTime.from(dateTime, tz.local),
+//       NotificationDetails(
+//         android: AndroidNotificationDetails(
+//           customSound ?? "channel1",
+//           "channel1",
+//           icon: "@mipmap/ic_launcher",
+//           importance: Importance.max,
+//           priority: Priority.max,
+//           playSound: true,
+//           sound: customSound == null
+//               ? null
+//               : RawResourceAndroidNotificationSound(customSound),
+//         ),
+//       ),
+//       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+//       uiLocalNotificationDateInterpretation:
+//           UILocalNotificationDateInterpretation.absoluteTime,
+//       matchDateTimeComponents: matchDateTimeComponents,
+//       payload: payload,
+//     );
+//     debugPrint(
+//         'notification $id - $title scheduled at ${dateTime.toIso8601String()}');
+//   }
+
+//   Future<void> _requestPermission() async {
+//     if (Platform.isAndroid) {
+//       flutterLocalNotificationsPlugin
+//           .resolvePlatformSpecificImplementation<
+//               AndroidFlutterLocalNotificationsPlugin>()!
+//           .requestNotificationsPermission();
+//     } else if (Platform.isIOS) {
+//       await flutterLocalNotificationsPlugin
+//           .resolvePlatformSpecificImplementation<
+//               IOSFlutterLocalNotificationsPlugin>()!
+//           .requestPermissions(
+//             alert: true,
+//             badge: true,
+//             sound: true,
+//             critical: true,
+//           );
+//     }
+//   }
+
+//   Future<void> sendImmediateNotification() async {
+//     NotificationService notificationService = NotificationService();
+
+//     // تأكد من تهيئة الإشعارات وطلب الإذن قبل إرسال الإشعار
+//     await notificationService.initNotification();
+//     await notificationService._requestPermission();
+
+//     // إرسال الإشعار مباشرة
+//     await notificationService.showNotification(
+//       id: 1, // يمكنك تغيير الـ id كما تريد
+//       title: "عنوان الإشعار",
+//       body: "هذا هو محتوى الإشعار",
+//     );
+//   }
+// }
+
+// Future<void> setupNotifications() async {
+//   NotificationService notificationService = NotificationService();
+
+//   await notificationService.initNotification();
+//   await notificationService._requestPermission();
+// }
