@@ -25,7 +25,7 @@ class ActionButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
-          textStyle: AppTextStyles.poppinsBoldstyle16,
+          textStyle: AppTextStyles.font16WhiteBold,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
             side: BorderSide(color: borderColor ?? AppColors.primaryColor),

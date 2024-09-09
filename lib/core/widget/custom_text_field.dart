@@ -51,9 +51,9 @@ class CustomTextForm extends StatelessWidget {
           errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(50),
               borderSide: const BorderSide(color: AppColors.red)),
-          errorStyle: AppTextStyles.poppins600style12,
+          errorStyle: AppTextStyles.font12RedW600,
           hintText: hinttext ?? "",
-          hintStyle: AppTextStyles.poppinsW500style16,
+          hintStyle: AppTextStyles.font15BlackW600,
           contentPadding:
               const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
           filled: true,

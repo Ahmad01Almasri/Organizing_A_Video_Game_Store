@@ -55,7 +55,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
     return AlertDialog(
       title: Center(
           child: Text(S.of(context).edit_item,
-              style: AppTextStyles.poppinsBoldstyle24)),
+              style: AppTextStyles.font24BlackBold)),
       content: Form(
         key: formstate,
         child: Column(
@@ -80,7 +80,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
                       value: item,
                       child: Text(
                         item,
-                        style: AppTextStyles.poppinsW500style15
+                        style: AppTextStyles.font15PrimaryColorW600
                             .copyWith(fontSize: 20),
                       ),
                     );
@@ -119,7 +119,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
               style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.black38.withOpacity(0.7)),
               child: Text(S.of(context).cancel,
-                  style: AppTextStyles.poppinsw600style14
+                  style: AppTextStyles.font14WhiteW600
                       .copyWith(color: AppColors.red)),
             ),
             ElevatedButton(
@@ -145,7 +145,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
               style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.black38.withOpacity(0.7)),
               child: Text(S.of(context).save,
-                  style: AppTextStyles.poppinsw600style14
+                  style: AppTextStyles.font14WhiteW600
                       .copyWith(color: AppColors.green)),
             ),
           ],

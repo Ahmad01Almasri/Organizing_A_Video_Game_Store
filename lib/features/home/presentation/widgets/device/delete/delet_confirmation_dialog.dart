@@ -16,12 +16,12 @@ Future<void> showDeleteDeviceConfirmationDialog(
       return AlertDialog(
         title: Text(
           S.of(context).confirm_delete_device,
-          style: AppTextStyles.poppinsThinW6000style22,
+          style: AppTextStyles.font22BlackW600,
         ),
         content: Text(
           S.of(context).delete_confirmation,
-          style:
-              AppTextStyles.poppinsBoldstyle18.copyWith(color: AppColors.black),
+          style: AppTextStyles.font18Primarystyle18
+              .copyWith(color: AppColors.black),
         ),
         actions: <Widget>[
           Row(
@@ -32,7 +32,7 @@ Future<void> showDeleteDeviceConfirmationDialog(
                     backgroundColor: MaterialStatePropertyAll(
                         AppColors.black38.withOpacity(0.7))),
                 child: Text(S.of(context).cancel,
-                    style: AppTextStyles.poppinsBoldstyle16
+                    style: AppTextStyles.font16WhiteBold
                         .copyWith(color: AppColors.green)),
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -43,7 +43,7 @@ Future<void> showDeleteDeviceConfirmationDialog(
                     backgroundColor: MaterialStatePropertyAll(
                         AppColors.black38.withOpacity(0.7))),
                 child: Text(S.of(context).delete,
-                    style: AppTextStyles.poppinsBoldstyle16
+                    style: AppTextStyles.font16WhiteBold
                         .copyWith(color: AppColors.red)),
                 onPressed: () async {
                   context.read<DeviceCubit>().deleteDevice(device);

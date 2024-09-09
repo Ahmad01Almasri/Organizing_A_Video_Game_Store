@@ -32,7 +32,7 @@ class _DeletSessionActionButtonState extends State<DeletSessionActionButton> {
         ActionButton(
             backgroundColor: AppColors.primaryColor,
             textNameButton: S.of(context).end_session,
-            textNamestyle: AppTextStyles.poppinsBoldstyle16,
+            textNamestyle: AppTextStyles.font16WhiteBold,
             onPressed: () {
               showClosedSessionDialog(context, widget.device);
 
@@ -47,7 +47,7 @@ class _DeletSessionActionButtonState extends State<DeletSessionActionButton> {
             borderColor: AppColors.red,
             textNameButton: S.of(context).back,
             textNamestyle:
-                AppTextStyles.poppinsBoldstyle16.copyWith(color: AppColors.red),
+                AppTextStyles.font16WhiteBold.copyWith(color: AppColors.red),
             onPressed: () {
               Navigator.pop(context);
             }),

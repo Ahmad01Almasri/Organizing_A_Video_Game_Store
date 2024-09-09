@@ -8,13 +8,13 @@ class AppThemeData {
     helpTextStyle: AppTextStyles.font24BlackBold,
     cancelButtonStyle: ButtonStyle(
       textStyle: MaterialStatePropertyAll(
-        AppTextStyles.poppinsBoldstyle18.copyWith(color: AppColors.black),
+        AppTextStyles.font18Primarystyle18.copyWith(color: AppColors.black),
       ),
       backgroundColor: const MaterialStatePropertyAll(AppColors.primaryColor),
     ),
     confirmButtonStyle: ButtonStyle(
       textStyle: MaterialStatePropertyAll(
-        AppTextStyles.poppinsBoldstyle18.copyWith(color: AppColors.black),
+        AppTextStyles.font18Primarystyle18.copyWith(color: AppColors.black),
       ),
       backgroundColor: const MaterialStatePropertyAll(AppColors.primaryColor),
     ),

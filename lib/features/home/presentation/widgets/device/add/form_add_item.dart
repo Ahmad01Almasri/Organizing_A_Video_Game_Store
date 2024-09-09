@@ -6,6 +6,7 @@ import '../../../../../../core/theming/styles.dart';
 import '../../../../../../core/widget/custom_text_field.dart';
 import '../../../../../../generated/l10n.dart';
 
+// ignore: must_be_immutable
 class FormTextFieldAddItem extends StatefulWidget {
   String selectedDevice;
   final TextEditingController nameDeviceController;
@@ -67,8 +68,8 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
                   value: item,
                   child: Text(
                     item,
-                    style:
-                        AppTextStyles.poppinsW500style15.copyWith(fontSize: 20),
+                    style: AppTextStyles.font15PrimaryColorW600
+                        .copyWith(fontSize: 20),
                   ),
                 );
               }).toList(),
