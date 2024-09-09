@@ -64,7 +64,7 @@ class AppTextStyles {
     fontWeight: AppFontWeight.medium,
     color: Colors.white,
   );
-  static TextStyle font18Primarystyle18 = const TextStyle(
+  static TextStyle font18PrimaryBold = const TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold,
     color: AppColors.primaryColor,

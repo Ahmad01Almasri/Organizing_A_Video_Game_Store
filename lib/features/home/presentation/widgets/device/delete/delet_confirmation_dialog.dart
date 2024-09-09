@@ -20,8 +20,8 @@ Future<void> showDeleteDeviceConfirmationDialog(
         ),
         content: Text(
           S.of(context).delete_confirmation,
-          style: AppTextStyles.font18Primarystyle18
-              .copyWith(color: AppColors.black),
+          style:
+              AppTextStyles.font18PrimaryBold.copyWith(color: AppColors.black),
         ),
         actions: <Widget>[
           Row(

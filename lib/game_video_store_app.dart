@@ -26,23 +26,7 @@ class GameStoreApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: S.delegate.supportedLocales,
-          theme: ThemeData.light().copyWith(
-            colorScheme: const ColorScheme.light(
-              primary: AppColors
-                  .white, // Set the color of the selected time and OK button (main color)
-            ),
-            buttonTheme: const ButtonThemeData(
-              colorScheme: ColorScheme.light(
-                primary: AppColors.primaryColor, // OK button background color
-              ),
-            ),
-            timePickerTheme: AppThemeData.mytimePickerThemeData,
-            textSelectionTheme: const TextSelectionThemeData(
-              cursorColor: AppColors.primaryColor,
-            ),
-            primaryColor: AppColors.primaryColor,
-            scaffoldBackgroundColor: AppColors.white,
-          ),
+          theme: AppThemeData.lightTheme(),
           debugShowCheckedModeBanner: false,
           initialRoute: Routes.homeScreen,
           onGenerateRoute: appRouter.generateRoute,
