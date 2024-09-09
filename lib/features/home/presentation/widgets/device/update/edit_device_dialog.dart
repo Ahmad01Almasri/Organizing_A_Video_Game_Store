@@ -65,7 +65,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
               labelText: S.of(context).device_name,
               controller: nameDeviceController,
               validator: (text) {
-                return AppConstants.validationNotEmpty(context, text);
+                return AppFunctions.validationNotEmpty(context, text);
               },
             ),
             verticalSpace(15),
@@ -73,7 +73,8 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
               readOnly: true,
               suffixIcon: Padding(
                 padding: EdgeInsets.only(
-                    left: IsArabic() ? 10.h : 0, right: IsArabic() ? 0 : 10.h),
+                    left: AppFunctions.isLanguageArabic() ? 10.h : 0,
+                    right: AppFunctions.isLanguageArabic() ? 0 : 10.h),
                 child: DropdownButton<String>(
                   items: AppConstants.deviceName(context).map((item) {
                     return DropdownMenuItem<String>(
@@ -102,7 +103,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
               controller: priceHourDeviceController,
               keyboardType: TextInputType.number,
               validator: (text) {
-                return AppConstants.validationNotEmpty(context, text);
+                return AppFunctions.validationNotEmpty(context, text);
               },
             ),
           ],

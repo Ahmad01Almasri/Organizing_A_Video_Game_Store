@@ -53,7 +53,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
           controller: widget.nameDeviceController,
           focusNode: _nameFocusNode,
           validator: (text) {
-            return AppConstants.validationNotEmpty(context, text);
+            return AppFunctions.validationNotEmpty(context, text);
           },
         ),
         verticalSpace(15),
@@ -61,7 +61,8 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
           readOnly: true,
           suffixIcon: Padding(
             padding: EdgeInsets.only(
-                left: IsArabic() ? 10 : 0, right: IsArabic() ? 0 : 16),
+                left: AppFunctions.isLanguageArabic() ? 10 : 0,
+                right: AppFunctions.isLanguageArabic() ? 0 : 16),
             child: DropdownButton<String>(
               items: AppConstants.deviceName(context).map((item) {
                 return DropdownMenuItem<String>(
@@ -90,7 +91,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
           controller: widget.priceHourDeviceController,
           keyboardType: TextInputType.number,
           validator: (text) {
-            return AppConstants.validationNotEmpty(context, text);
+            return AppFunctions.validationNotEmpty(context, text);
           },
         ),
       ],

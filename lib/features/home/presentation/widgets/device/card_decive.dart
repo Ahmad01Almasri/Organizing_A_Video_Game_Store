@@ -32,8 +32,8 @@ class CardDevice extends StatelessWidget {
                   padding: EdgeInsets.only(
                       bottom: 7.h,
                       top: 7.h,
-                      left: IsArabic() ? 20.h : 14.h,
-                      right: IsArabic() ? 14.h : 20.h),
+                      left: AppFunctions.isLanguageArabic() ? 20.h : 14.h,
+                      right: AppFunctions.isLanguageArabic() ? 14.h : 20.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
