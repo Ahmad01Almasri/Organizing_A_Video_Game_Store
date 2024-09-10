@@ -9,16 +9,16 @@ import '../../data/sources/local_device_data_source.dart';
 import 'device_state.dart';
 
 class DeviceCubit extends Cubit<DeviceState> {
-  DeviceCubit() : super(DeviceInitial());
+  DeviceCubit() : super(DeviceState.initial());
 
   void loadDevices() async {
-    emit(DeviceLoading());
+    emit(DeviceState.loading());
     try {
       final devices =
           LocalDeviceDataSource.listenToDevices().value.values.toList();
-      emit(DeviceLoaded(devices));
+      emit(DeviceState.loaded(devices));
     } catch (e) {
-      emit(DeviceError("Failed to load devices"));
+      emit(DeviceState.error("Failed to load devices"));
     }
   }
 
@@ -27,7 +27,7 @@ class DeviceCubit extends Cubit<DeviceState> {
       await LocalDeviceDataSource.addDevice(device: device);
       loadDevices();
     } catch (e) {
-      emit(DeviceError("Failed to add device"));
+      emit(DeviceState.error("Failed to add device"));
     }
   }
 
@@ -36,7 +36,7 @@ class DeviceCubit extends Cubit<DeviceState> {
       await LocalDeviceDataSource.updateDevice(device: device);
       loadDevices();
     } catch (e) {
-      emit(DeviceError("Failed to update device"));
+      emit(DeviceState.error("Failed to update device"));
     }
   }
 
@@ -45,7 +45,7 @@ class DeviceCubit extends Cubit<DeviceState> {
       await LocalDeviceDataSource.deleteDevice(device: device);
       loadDevices();
     } catch (e) {
-      emit(DeviceError("Failed to delete device"));
+      emit(DeviceState.error("Failed to delete device"));
     }
   }
 
@@ -56,7 +56,6 @@ class DeviceCubit extends Cubit<DeviceState> {
 
       if (device.isInBox) {
         await deviceBox.put(device.id, updatedDevice);
-
         await updatedDevice.save();
       } else {
         await deviceBox.put(updatedDevice.id, updatedDevice);
@@ -68,7 +67,6 @@ class DeviceCubit extends Cubit<DeviceState> {
 
       if (device.isInBox) {
         await deviceBox.put(device.id, updatedDevice);
-
         await updatedDevice.save();
       } else {
         await deviceBox.put(updatedDevice.id, updatedDevice);
@@ -81,7 +79,6 @@ class DeviceCubit extends Cubit<DeviceState> {
     final duration = DateTime.now().difference(customer!.createdAt);
     final hours = duration.inHours;
     final minutes = duration.inMinutes.remainder(60);
-
     return "$hours:$minutes";
   }
 
@@ -90,16 +87,16 @@ class DeviceCubit extends Cubit<DeviceState> {
         LocalDeviceDataSource.listenToDevices().value.values.toList();
 
     if (type == S.of(context).all_devices) {
-      emit(DeviceLoaded(allDevices));
+      emit(DeviceState.loaded(allDevices));
     } else {
       final filteredDevices =
           allDevices.where((device) => device.type == type).toList();
 
       if (filteredDevices.isEmpty) {
         showNoDeviceTypeToast(context, S.of(context).no_devices);
-        emit(DeviceLoaded(allDevices));
+        emit(DeviceState.loaded(allDevices));
       } else {
-        emit(DeviceLoaded(filteredDevices));
+        emit(DeviceState.loaded(filteredDevices));
       }
     }
   }

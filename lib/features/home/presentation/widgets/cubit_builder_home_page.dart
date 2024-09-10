@@ -15,10 +15,10 @@ class CubitBuilderHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DeviceCubit, DeviceState>(
       builder: (context, state) {
-        if (state is DeviceLoading) {
+        if (state.type == DeviceStateType.loading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is DeviceLoaded) {
-          final devices = state.devices;
+        } else if (state.type == DeviceStateType.loaded) {
+          final devices = state.devices ?? [];
           return devices.isEmpty
               ? const EmptyDeviceListWidget()
               : Column(
@@ -34,8 +34,8 @@ class CubitBuilderHomePage extends StatelessWidget {
                     ListViewDevices(devices: devices),
                   ],
                 );
-        } else if (state is DeviceError) {
-          return Center(child: Text(state.message));
+        } else if (state.type == DeviceStateType.error) {
+          return Center(child: Text(state.message ?? 'An error occurred'));
         }
         return const SizedBox.shrink();
       },
