@@ -58,7 +58,7 @@ class _AddSessionButtonState extends State<AddSessionButton> {
           customerName = widget.customerNameController.text;
 
           if (customerName.isNotEmpty) {
-            final customer = CustomerModel.create(
+            final customer = CustomerModel(
               selectedTime: selectedDateTime,
               name: customerName,
             );

@@ -17,11 +17,11 @@ class DeviceModelAdapter extends TypeAdapter<DeviceModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return DeviceModel(
-      id: fields[0] as String,
-      name: fields[1] as String,
-      type: fields[2] as String,
-      price: fields[3] as String,
-      isAvailable: fields[4] as bool,
+      id: fields[0] as String?,
+      name: fields[1] as String?,
+      type: fields[2] as String?,
+      price: fields[3] as String?,
+      isAvailable: fields[4] as bool?,
       customer: fields[5] as CustomerModel?,
     );
   }

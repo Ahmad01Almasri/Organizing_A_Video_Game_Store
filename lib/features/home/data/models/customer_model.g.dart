@@ -17,9 +17,9 @@ class CustomerModelAdapter extends TypeAdapter<CustomerModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CustomerModel(
-      id: fields[0] as String,
+      id: fields[0] as String?,
       name: fields[1] as String,
-      createdAt: fields[2] as DateTime,
+      createdAt: fields[2] as DateTime?,
       selectedTime: fields[3] as DateTime?,
     );
   }
