@@ -18,20 +18,10 @@ class CustomerModel extends HiveObject {
   DateTime? selectedTime;
 
   CustomerModel({
-    required this.id,
+    String? id,
     required this.name,
-    required this.createdAt,
+    DateTime? createdAt,
     required this.selectedTime,
-  });
-
-  factory CustomerModel.create({
-    required String? name,
-    required DateTime? selectedTime,
-  }) =>
-      CustomerModel(
-        id: const Uuid().v1(),
-        name: name ?? "",
-        createdAt: DateTime.now(),
-        selectedTime: selectedTime,
-      );
+  })  : id = id ?? const Uuid().v1(),
+        createdAt = createdAt ?? DateTime.now();
 }

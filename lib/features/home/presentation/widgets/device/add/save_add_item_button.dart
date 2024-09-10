@@ -30,7 +30,7 @@ class SaveAddItemButton extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(15))),
       onPressed: () {
         if (formstate.currentState!.validate()) {
-          final device = DeviceModel.create(
+          final device = DeviceModel(
             name: nameDeviceController.text,
             type: typeDeviceController.text,
             price: priceHourDeviceController.text,

@@ -20,27 +20,17 @@ class DeviceModel extends HiveObject {
   CustomerModel? customer; // Nullable to allow for no customer
 
   DeviceModel({
-    required this.id,
-    required this.name,
-    required this.type,
-    required this.price,
-    required this.isAvailable,
-    this.customer,
-  });
-
-  factory DeviceModel.create({
+    String? id,
     required String? name,
     required String? type,
     required String? price,
     required bool? isAvailable,
-  }) =>
-      DeviceModel(
-        id: const Uuid().v1(),
-        name: name ?? "",
-        type: type ?? "",
-        price: price ?? "0.0",
-        isAvailable: isAvailable ?? true,
-      );
+    this.customer,
+  })  : id = id ?? const Uuid().v1(),
+        name = name ?? "",
+        type = type ?? "",
+        price = price ?? "0.0",
+        isAvailable = isAvailable ?? true;
 
   // Method to set a new customer
   void setCustomer(CustomerModel customer) {
