@@ -15,7 +15,6 @@
     "time": "الوقت",
     "end_session": "إغلاق الجلسة",
     "back": "عودة",
-    "session_closed": "تم إغلاق الجلسة",
     "customer_account": "حساب الزبون: ",
     "currency": "ل.س",
     "close": "إغلاق",
@@ -26,5 +25,6 @@
     "ok": "حسناً",
     "choose_time": "اختيار الوقت",
     "add_device": "أضف جهاز",
-    "cancel":"إغلاق"
+    "cancel":"إغلاق",
+    "the_session_is_closed": "تم إغلاق الجلسة"
 }

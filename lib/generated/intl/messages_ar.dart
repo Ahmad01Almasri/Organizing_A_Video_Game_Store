@@ -51,9 +51,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "ok": MessageLookupByLibrary.simpleMessage("حسناً"),
         "playstation": MessageLookupByLibrary.simpleMessage("بلايستيشن"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
-        "session_closed":
-            MessageLookupByLibrary.simpleMessage("تم إغلاق الجلسة"),
         "set_reminder": MessageLookupByLibrary.simpleMessage("ضبط تذكير"),
+        "the_session_is_closed":
+            MessageLookupByLibrary.simpleMessage("تم إغلاق الجلسة"),
         "time": MessageLookupByLibrary.simpleMessage("الوقت"),
         "title": MessageLookupByLibrary.simpleMessage("الأجهزة")
       };

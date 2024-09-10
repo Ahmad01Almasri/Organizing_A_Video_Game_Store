@@ -26,14 +26,14 @@ Future<void> showClosedSessionDialog(
     builder: (context) {
       return AlertDialog(
         title: Text(
-          "تم إغلاق الجلسة",
+          S.of(context).the_session_is_closed,
           style: AppTextStyles.font24BlackBold,
         ),
         content: RichText(
           text: TextSpan(
             children: [
               TextSpan(
-                text: 'حساب الزبون : ',
+                text: S.of(context).customer_account,
                 style: AppTextStyles.font16grayBold,
               ),
               TextSpan(

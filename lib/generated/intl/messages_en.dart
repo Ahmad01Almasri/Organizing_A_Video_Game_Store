@@ -54,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "session_closed":
             MessageLookupByLibrary.simpleMessage("Session Closed"),
         "set_reminder": MessageLookupByLibrary.simpleMessage("Set Reminder"),
+        "the_session_is_closed":
+            MessageLookupByLibrary.simpleMessage("The session is closed"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
         "title": MessageLookupByLibrary.simpleMessage("The Devices")
       };

@@ -329,6 +329,16 @@ class S {
       args: [],
     );
   }
+
+  /// `The session is closed`
+  String get the_session_is_closed {
+    return Intl.message(
+      'The session is closed',
+      name: 'the_session_is_closed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -39,6 +39,8 @@ class _FormTextDetailsSessionState extends State<FormTextDetailsSession> {
   @override
   void dispose() {
     _nameFocusNode.dispose();
+    widget.customerNameController.dispose();
+    widget.customerTimeController.dispose();
     super.dispose();
   }
 

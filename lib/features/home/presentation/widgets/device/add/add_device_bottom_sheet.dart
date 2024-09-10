@@ -51,9 +51,5 @@ Future<dynamic> showAddDeviceBottomSheet(
         ],
       ),
     ),
-  ).whenComplete(() {
-    nameDeviceTextController.clear();
-    typeDeviceTextController.clear();
-    priceHourDeviceTextController.clear();
-  });
+  );
 }

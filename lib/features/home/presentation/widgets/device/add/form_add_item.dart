@@ -41,6 +41,9 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
   @override
   void dispose() {
     _nameFocusNode.dispose();
+    widget.nameDeviceController.dispose();
+    widget.typeDeviceController.dispose();
+    widget.priceHourDeviceController.dispose();
     super.dispose();
   }
 
