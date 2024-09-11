@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game_store/core/theming/colors.dart';
 import '../../../../../../core/helpers/app_constants.dart';
 import '../../../../../../core/helpers/app_functions.dart';
 import '../../../../../../core/helpers/spacing.dart';
@@ -27,6 +29,50 @@ class FormTextFieldAddItem extends StatefulWidget {
 
 class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
   late FocusNode _nameFocusNode;
+  String? _selectedDevice;
+  void showSelectDeviceTypeDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          titleTextStyle: AppTextStyles.font24BlackBold,
+          title: Text(S.of(context).device_type),
+          content: SizedBox(
+            width: double.maxFinite,
+            height: 200.h,
+            child: ListView(
+              children: AppConstants.deviceName(context).map((item) {
+                return ListTile(
+                  title: Row(
+                    children: [
+                      Icon(
+                        Icons.circle,
+                        color: AppColors.primaryColor,
+                        size: 10,
+                      ),
+                      horizontalSpace(5),
+                      Text(
+                        item,
+                        style: AppTextStyles.font15PrimaryColorW600
+                            .copyWith(fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    setState(() {
+                      _selectedDevice = item;
+                      widget.typeDeviceController.text = _selectedDevice!;
+                    });
+                    Navigator.pop(context); // إغلاق الحوار بعد اختيار العنصر
+                  },
+                );
+              }).toList(),
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -61,29 +107,15 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
         ),
         verticalSpace(15),
         CustomTextForm(
+          onTap: () {
+            showSelectDeviceTypeDialog(context);
+          },
           readOnly: true,
           suffixIcon: Padding(
             padding: EdgeInsets.only(
                 left: AppFunctions.isLanguageArabic() ? 10 : 0,
                 right: AppFunctions.isLanguageArabic() ? 0 : 16),
-            child: DropdownButton<String>(
-              items: AppConstants.deviceName(context).map((item) {
-                return DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: AppTextStyles.font15PrimaryColorW600
-                        .copyWith(fontSize: 20),
-                  ),
-                );
-              }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  widget.selectedDevice = value!;
-                  widget.typeDeviceController.text = widget.selectedDevice;
-                });
-              },
-            ),
+            child: Icon(Icons.arrow_drop_down),
           ),
           labelText: S.of(context).device_type,
           controller: widget.typeDeviceController,

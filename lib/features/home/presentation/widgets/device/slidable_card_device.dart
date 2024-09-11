@@ -10,7 +10,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../data/models/device_model.dart';
 import '../session/details/details_session_bottom_sheet.dart';
 import 'delete/delet_confirmation_dialog.dart';
-import 'update/edit_device_dialog.dart';
+import 'edit/edit_device_dialog.dart';
 
 class SlidableCardItem extends StatelessWidget {
   const SlidableCardItem({

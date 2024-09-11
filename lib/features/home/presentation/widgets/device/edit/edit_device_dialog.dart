@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/core/theming/colors.dart';
 import 'package:game_store/core/theming/styles.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
-import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../../../core/helpers/app_constants.dart';
 import '../../../../../../core/helpers/app_functions.dart';
 import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/widget/custom_text_field.dart';
 import '../../../../../../generated/l10n.dart';
+import 'row_action_button.dart';
 
 class EditDeviceDialog extends StatefulWidget {
   final DeviceModel device;
@@ -30,6 +28,52 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
   late final TextEditingController typeDeviceController;
   late final TextEditingController priceHourDeviceController;
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
+
+  void showSelectDeviceTypeDialog(BuildContext context) {
+    String _selectedDevice = widget.device.type;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          titleTextStyle: AppTextStyles.font24BlackBold,
+          title: Text(S.of(context).device_type),
+          content: SizedBox(
+            width: double.maxFinite,
+            height: 200.h,
+            child: ListView(
+              children: AppConstants.deviceName(context).map((item) {
+                return ListTile(
+                  title: Row(
+                    children: [
+                      Icon(
+                        Icons.circle,
+                        color: AppColors.primaryColor,
+                        size: 10,
+                      ),
+                      horizontalSpace(5),
+                      Text(
+                        item,
+                        style: AppTextStyles.font15PrimaryColorW600
+                            .copyWith(fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    setState(() {
+                      _selectedDevice = item;
+                      typeDeviceController.text = _selectedDevice;
+                    });
+                    Navigator.pop(context); // إغلاق الحوار بعد اختيار العنصر
+                  },
+                );
+              }).toList(),
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -51,7 +95,6 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
 
   @override
   Widget build(BuildContext context) {
-    String selectedDevice = widget.device.type;
     return AlertDialog(
       title: Center(
           child: Text(S.of(context).edit_item,
@@ -70,29 +113,15 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
             ),
             verticalSpace(15),
             CustomTextForm(
+              onTap: () {
+                showSelectDeviceTypeDialog(context);
+              },
               readOnly: true,
               suffixIcon: Padding(
                 padding: EdgeInsets.only(
-                    left: AppFunctions.isLanguageArabic() ? 10.h : 0,
-                    right: AppFunctions.isLanguageArabic() ? 0 : 10.h),
-                child: DropdownButton<String>(
-                  items: AppConstants.deviceName(context).map((item) {
-                    return DropdownMenuItem<String>(
-                      value: item,
-                      child: Text(
-                        item,
-                        style: AppTextStyles.font15PrimaryColorW600
-                            .copyWith(fontSize: 20),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      selectedDevice = value!;
-                      typeDeviceController.text = selectedDevice;
-                    });
-                  },
-                ),
+                    left: AppFunctions.isLanguageArabic() ? 10 : 0,
+                    right: AppFunctions.isLanguageArabic() ? 0 : 16),
+                child: Icon(Icons.arrow_drop_down),
               ),
               labelText: S.of(context).device_type,
               controller: typeDeviceController,
@@ -110,47 +139,12 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
         ),
       ),
       actions: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.black38.withOpacity(0.7)),
-              child: Text(S.of(context).cancel,
-                  style: AppTextStyles.font14WhiteW600
-                      .copyWith(color: AppColors.red)),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                if (formstate.currentState!.validate()) {
-                  final updatedDevice = widget.device;
-                  updatedDevice.name = nameDeviceController.text;
-                  updatedDevice.type = typeDeviceController.text;
-                  updatedDevice.price = priceHourDeviceController.text;
-                  updatedDevice.isAvailable = true;
-
-                  var deviceBox = Hive.box<DeviceModel>('devicesBox');
-                  if (updatedDevice.isInBox) {
-                    await updatedDevice.save();
-                  } else {
-                    await deviceBox.put(updatedDevice.key, updatedDevice);
-                  }
-
-                  context.read<DeviceCubit>().updateDevice(updatedDevice);
-                  Navigator.pop(context);
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.black38.withOpacity(0.7)),
-              child: Text(S.of(context).save,
-                  style: AppTextStyles.font14WhiteW600
-                      .copyWith(color: AppColors.green)),
-            ),
-          ],
-        ),
+        RowActionButtonEditDialog(
+            formstate: formstate,
+            widget: widget,
+            nameDeviceController: nameDeviceController,
+            typeDeviceController: typeDeviceController,
+            priceHourDeviceController: priceHourDeviceController),
       ],
     );
   }
