@@ -63,8 +63,10 @@ class _AddSessionButtonState extends State<AddSessionButton> {
               name: customerName,
             );
 
-            widget.device.setCustomer(customer);
-            context.read<DeviceCubit>().toggleDeviceAvailability(widget.device);
+            await widget.device.setCustomer(customer);
+            await context
+                .read<DeviceCubit>()
+                .toggleDeviceAvailability(widget.device);
 
             Navigator.pop(context);
           }

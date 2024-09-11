@@ -33,13 +33,13 @@ class DeviceModel extends HiveObject {
         isAvailable = isAvailable ?? true;
 
   // Method to set a new customer
-  void setCustomer(CustomerModel customer) {
+  Future<void> setCustomer(CustomerModel customer) async {
     this.customer = customer;
-    save(); // Save the updated device
+    await this.save();
   }
 
 // Method to remove the current customer
-  void removeCustomer() async {
+  Future<void> removeCustomer() async {
     if (this.customer != null) {
       this.customer = null;
 

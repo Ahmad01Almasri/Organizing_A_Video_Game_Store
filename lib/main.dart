@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/game_video_store_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'features/home/data/models/customer_model.dart';
+import 'features/home/data/repositories_impl/device_repo_imp.dart';
+import 'features/home/data/sources/local_device_data_source.dart';
+import 'features/home/domain/use_cases/z.dart';
 import 'features/home/presentation/cubit/device_cubit.dart';
 import 'injection_container.dart' as di;
 // import 'package:timezone/data/latest.dart' as tz;
@@ -20,8 +23,7 @@ void main() async {
   Hive.registerAdapter(CustomerModelAdapter());
 
   // Open your boxes
-  await Hive.openBox<DeviceModel>('devicesBox');
-
+  await LocalDeviceDataSource.init();
   // Initialize dependencies
   await di.init();
 
@@ -36,7 +38,9 @@ void main() async {
 
   runApp(
     BlocProvider(
-      create: (context) => DeviceCubit()..loadDevices(),
+      create: (context) =>
+          DeviceCubit(deviceUseCase: DeviceUseCase(DeviceRepositoryImpl()))
+            ..loadDevices(),
       child: GameStoreApp(
         appRouter: AppRouter(),
       ),

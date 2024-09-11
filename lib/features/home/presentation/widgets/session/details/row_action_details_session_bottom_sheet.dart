@@ -6,7 +6,6 @@ import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/theming/colors.dart';
 import '../../../../../../core/theming/styles.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../../data/sources/local_device_data_source.dart';
 import '../../../cubit/device_cubit.dart';
 import '../delete/closed_session_dialog.dart';
 import 'action_button.dart';
@@ -33,14 +32,12 @@ class _DeletSessionActionButtonState extends State<DeletSessionActionButton> {
             backgroundColor: AppColors.primaryColor,
             textNameButton: S.of(context).end_session,
             textNamestyle: AppTextStyles.font16WhiteBold,
-            onPressed: () {
+            onPressed: () async {
               showClosedSessionDialog(context, widget.device);
-
-              context
+              await widget.device.removeCustomer();
+              await context
                   .read<DeviceCubit>()
                   .toggleDeviceAvailability(widget.device);
-              widget.device.removeCustomer();
-              LocalDeviceDataSource.updateDevice(device: widget.device);
             }),
         horizontalSpace(10),
         ActionButton(

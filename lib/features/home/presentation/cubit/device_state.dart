@@ -11,7 +11,6 @@ class DeviceState {
     this.message,
   });
 
-  // Factory constructors for different states
   factory DeviceState.initial() {
     return DeviceState._(type: DeviceStateType.initial);
   }
@@ -29,5 +28,4 @@ class DeviceState {
   }
 }
 
-// Enum to define the type of state
 enum DeviceStateType { initial, loading, loaded, error }
