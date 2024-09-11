@@ -26,5 +26,6 @@
     "choose_time": "اختيار الوقت",
     "add_device": "أضف جهاز",
     "cancel":"إغلاق",
+    "hour":"ساعة",
     "the_session_is_closed": "تم إغلاق الجلسة"
 }

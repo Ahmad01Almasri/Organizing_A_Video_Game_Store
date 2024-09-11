@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "end_session": MessageLookupByLibrary.simpleMessage("End Session"),
         "field_required": MessageLookupByLibrary.simpleMessage(
             "The field cannot be left empty"),
+        "hour": MessageLookupByLibrary.simpleMessage("hour"),
         "hourly_rate": MessageLookupByLibrary.simpleMessage("Hourly Rate"),
         "laptop": MessageLookupByLibrary.simpleMessage("Laptop"),
         "no_devices": MessageLookupByLibrary.simpleMessage(

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
+import '../../../lan/cubit.dart';
 
 class TopBarHome extends StatelessWidget {
   final Function(String) onFilterSelected;
+
   const TopBarHome({
     super.key,
     required this.onFilterSelected,
@@ -46,6 +49,16 @@ class TopBarHome extends StatelessWidget {
                 child: Text(S.of(context).playstation),
               ),
             ],
+          ),
+          BlocBuilder<LanguageCubit, Locale>(
+            builder: (context, locale) {
+              return Switch(
+                value: locale.languageCode == 'ar',
+                onChanged: (_) =>
+                    context.read<LanguageCubit>().toggleLanguage(),
+                activeColor: Colors.blue,
+              );
+            },
           ),
         ],
       ),

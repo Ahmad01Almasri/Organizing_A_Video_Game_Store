@@ -27,6 +27,7 @@
     "choose_time": "Choose Time",
     "add_device": "Add Device",
     "cancel":"cancel",
+    "hour":"hour",
     "the_session_is_closed": "The session is closed"
 
 }

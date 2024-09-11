@@ -100,7 +100,11 @@ class SlidableCardItem extends StatelessWidget {
                                 .copyWith(fontSize: 22.sp),
                           ),
                           Text(
-                            device.price + " ل.س" + "/ " + "ساعة",
+                            device.price +
+                                " " +
+                                S.of(context).currency +
+                                "/ " +
+                                S.of(context).hour,
                             style: AppTextStyles.font16graySemiBold
                                 .copyWith(color: AppColors.gray),
                           ),

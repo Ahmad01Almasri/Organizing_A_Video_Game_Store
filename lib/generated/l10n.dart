@@ -330,6 +330,16 @@ class S {
     );
   }
 
+  /// `hour`
+  String get hour {
+    return Intl.message(
+      'hour',
+      name: 'hour',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The session is closed`
   String get the_session_is_closed {
     return Intl.message(

@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "end_session": MessageLookupByLibrary.simpleMessage("إغلاق الجلسة"),
         "field_required":
             MessageLookupByLibrary.simpleMessage("لا يمكن ترك الحقل فارغ"),
+        "hour": MessageLookupByLibrary.simpleMessage("ساعة"),
         "hourly_rate": MessageLookupByLibrary.simpleMessage("سعر الساعة"),
         "laptop": MessageLookupByLibrary.simpleMessage("لابتوب"),
         "no_devices": MessageLookupByLibrary.simpleMessage(
