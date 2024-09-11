@@ -13,12 +13,28 @@ Future<void> showClosedSessionDialog(
   final durationString =
       context.read<DeviceCubit>().getCustomerDuration(device.customer);
 
-  // Ensure the duration is converted to an int, default to 0 if conversion fails
-  final duration = int.tryParse(durationString.toString()) ?? 0;
+  // Ensure the duration is split into hours and minutes
+  final parts = durationString?.split(':');
+  if (parts == null || parts.length != 2) {
+    print('Invalid duration format');
+    return;
+  }
+
+  // Parse hours and minutes
+  final hours = int.tryParse(parts[0]) ?? 0;
+  final minutes = int.tryParse(parts[1]) ?? 0;
+
+  // Convert the total duration to minutes
+  final totalMinutes = (hours * 60) + minutes;
+  print('Total minutes: $totalMinutes');
+
   // Try to parse the price and handle potential null/invalid values
   final price = double.tryParse(device.price) ?? 0;
+  print('Price per hour: $price');
 
-  final totalPrice = price * duration / 60;
+  // Calculate the total price
+  final totalPrice = price * totalMinutes / 60;
+  print('Total price: $totalPrice');
 
   return showDialog<void>(
     context: context,
