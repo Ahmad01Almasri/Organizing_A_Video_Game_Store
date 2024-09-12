@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_store/core/theming/colors.dart';
 import 'package:game_store/core/theming/styles.dart';
 
@@ -8,10 +7,9 @@ import '../../../../data/models/device_model.dart';
 import '../../../cubit/device_cubit.dart';
 
 Future<void> showClosedSessionDialog(
-    BuildContext context, DeviceModel device) async {
+    BuildContext context, DeviceModel device, DeviceCubit deviceCubit) async {
   // Get the duration from the cubit
-  final durationString =
-      context.read<DeviceCubit>().getCustomerDuration(device.customer);
+  final durationString = deviceCubit.getCustomerDuration(device.customer);
 
   // Ensure the duration is split into hours and minutes
   final parts = durationString?.split(':');

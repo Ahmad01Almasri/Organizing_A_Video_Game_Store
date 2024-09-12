@@ -24,6 +24,7 @@ class FormTextFieldAddItem extends StatefulWidget {
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _FormTextFieldAddItemState createState() => _FormTextFieldAddItemState();
 }
 
@@ -45,7 +46,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
                 return ListTile(
                   title: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.circle,
                         color: AppColors.primaryColor,
                         size: 10,
@@ -115,7 +116,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
             padding: EdgeInsets.only(
                 left: AppFunctions.isLanguageArabic() ? 10 : 0,
                 right: AppFunctions.isLanguageArabic() ? 0 : 16),
-            child: Icon(Icons.arrow_drop_down),
+            child: const Icon(Icons.arrow_drop_down),
           ),
           labelText: S.of(context).device_type,
           controller: widget.typeDeviceController,

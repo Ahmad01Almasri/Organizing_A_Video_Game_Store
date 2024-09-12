@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/theming/colors.dart';
 import '../../../../../../core/theming/styles.dart';
@@ -8,7 +7,7 @@ import '../../../../data/models/device_model.dart';
 import '../../../cubit/device_cubit.dart';
 
 Future<void> showDeleteDeviceConfirmationDialog(
-    BuildContext context, DeviceModel device) async {
+    BuildContext context, DeviceModel device, DeviceCubit deviceCubit) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: true,
@@ -46,7 +45,7 @@ Future<void> showDeleteDeviceConfirmationDialog(
                     style: AppTextStyles.font16WhiteBold
                         .copyWith(color: AppColors.red)),
                 onPressed: () async {
-                  context.read<DeviceCubit>().deleteDevice(device);
+                  deviceCubit.deleteDevice(device);
 
                   Navigator.pop(context);
                 },

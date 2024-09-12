@@ -7,8 +7,10 @@ import 'device/list_view_device_item.dart';
 import '../widgets/top_bar_home.dart';
 
 class CubitBuilderHomePage extends StatelessWidget {
+  final DeviceCubit devicecubit;
   const CubitBuilderHomePage({
     super.key,
+    required this.devicecubit,
   });
 
   @override
@@ -31,7 +33,10 @@ class CubitBuilderHomePage extends StatelessWidget {
                             .filterDevicesByType(context, type);
                       },
                     ),
-                    ListViewDevices(devices: devices),
+                    ListViewDevices(
+                      devices: devices,
+                      deviceCubit: devicecubit,
+                    ),
                   ],
                 );
         } else if (state.type == DeviceStateType.error) {

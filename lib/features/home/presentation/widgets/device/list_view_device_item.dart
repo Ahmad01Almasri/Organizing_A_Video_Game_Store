@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
+import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 
 import 'card_decive.dart';
 
 class ListViewDevices extends StatelessWidget {
   final List<DeviceModel> devices;
+  final DeviceCubit deviceCubit;
   const ListViewDevices({
     super.key,
     required this.devices,
+    required this.deviceCubit,
   });
 
   @override
@@ -21,6 +24,7 @@ class ListViewDevices extends StatelessWidget {
           itemCount: devices.length,
           itemBuilder: (context, index) {
             return CardDevice(
+              deviceCubit: deviceCubit,
               device: devices[index],
               index: index,
             );

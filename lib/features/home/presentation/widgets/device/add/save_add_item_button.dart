@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/theming/colors.dart';
 import '../../../../../../core/theming/styles.dart';
@@ -12,9 +11,10 @@ class SaveAddItemButton extends StatelessWidget {
   final TextEditingController typeDeviceController;
   final TextEditingController priceHourDeviceController;
   final GlobalKey<FormState> formstate;
-
+  final DeviceCubit deviceCubit;
   const SaveAddItemButton({
     super.key,
+    required this.deviceCubit,
     required this.nameDeviceController,
     required this.typeDeviceController,
     required this.priceHourDeviceController,
@@ -36,7 +36,7 @@ class SaveAddItemButton extends StatelessWidget {
             price: priceHourDeviceController.text,
             isAvailable: true,
           );
-          context.read<DeviceCubit>().addDevice(device);
+          deviceCubit.addDevice(device);
 
           Navigator.pop(context);
         }

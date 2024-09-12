@@ -10,8 +10,8 @@ import 'row_action_details_session_bottom_sheet.dart';
 
 TimeOfDay? selectedTime = null;
 String customerName = "";
-Future<dynamic> showDetailsSessionBottomSheet(
-    BuildContext context, bool isAvailable, DeviceModel device) {
+Future<dynamic> showDetailsSessionBottomSheet(BuildContext context,
+    bool isAvailable, DeviceModel device, DeviceCubit deviceCubit) {
   final customerNameController =
       TextEditingController(text: device.customer?.name ?? "");
 
@@ -49,11 +49,13 @@ Future<dynamic> showDetailsSessionBottomSheet(
                   verticalSpace(30),
                   isAvailable
                       ? AddSessionButton(
+                          deviceCubit: deviceCubit,
                           formstate: formstate,
                           customerNameController: customerNameController,
                           device: device,
                         )
                       : DeletSessionActionButton(
+                          deviceCubit: deviceCubit,
                           device: device,
                         ),
                   verticalSpace(30),

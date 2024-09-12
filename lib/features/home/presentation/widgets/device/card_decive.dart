@@ -7,24 +7,32 @@ import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/device_model.dart';
+import '../../cubit/device_cubit.dart';
 import '../session/details/details_session_bottom_sheet.dart';
 import 'slidable_card_device.dart';
 
 class CardDevice extends StatelessWidget {
   final DeviceModel device;
   final int index;
+  final DeviceCubit deviceCubit;
+
   const CardDevice({
     super.key,
     required this.device,
     required this.index,
+    required this.deviceCubit,
   });
 
   @override
   Widget build(BuildContext context) {
     return device.isAvailable
-        ? SlidableCardItem(device: device)
+        ? SlidableCardItem(
+            device: device,
+            deviceCubit: deviceCubit,
+          )
         : GestureDetector(
-            onTap: () => showDetailsSessionBottomSheet(context, false, device),
+            onTap: () => showDetailsSessionBottomSheet(
+                context, false, device, deviceCubit),
             child: SizedBox(
               height: 90.h,
               child: Card(
@@ -63,10 +71,7 @@ class CardDevice extends StatelessWidget {
                                     .copyWith(fontSize: 22.sp),
                               ),
                               Text(
-                                device.price +
-                                    S.of(context).currency +
-                                    "/ " +
-                                    S.of(context).hour,
+                                "${device.price}${S.of(context).currency}/ ${S.of(context).hour}",
                                 style: AppTextStyles.font16graySemiBold
                                     .copyWith(color: AppColors.gray),
                               ),

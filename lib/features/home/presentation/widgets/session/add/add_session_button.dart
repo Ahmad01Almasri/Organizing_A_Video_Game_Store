@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 import '../../../../../../core/theming/colors.dart';
@@ -15,12 +14,13 @@ class AddSessionButton extends StatefulWidget {
     required this.formstate,
     required this.customerNameController,
     required this.device,
+    required this.deviceCubit,
   });
 
   final GlobalKey<FormState> formstate;
   final TextEditingController customerNameController;
   final DeviceModel device;
-
+  final DeviceCubit deviceCubit;
   @override
   _AddSessionButtonState createState() => _AddSessionButtonState();
 }
@@ -64,9 +64,7 @@ class _AddSessionButtonState extends State<AddSessionButton> {
             );
 
             await widget.device.setCustomer(customer);
-            await context
-                .read<DeviceCubit>()
-                .toggleDeviceAvailability(widget.device);
+            await widget.deviceCubit.toggleDeviceAvailability(widget.device);
 
             Navigator.pop(context);
           }

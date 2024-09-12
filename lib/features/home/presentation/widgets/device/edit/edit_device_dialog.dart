@@ -9,14 +9,16 @@ import '../../../../../../core/helpers/app_functions.dart';
 import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/widget/custom_text_field.dart';
 import '../../../../../../generated/l10n.dart';
+import '../../../cubit/device_cubit.dart';
 import 'row_action_button.dart';
 
 class EditDeviceDialog extends StatefulWidget {
   final DeviceModel device;
-
+  final DeviceCubit deviceCubit;
   const EditDeviceDialog({
     super.key,
     required this.device,
+    required this.deviceCubit,
   });
 
   @override
@@ -46,7 +48,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
                 return ListTile(
                   title: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.circle,
                         color: AppColors.primaryColor,
                         size: 10,
@@ -121,7 +123,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
                 padding: EdgeInsets.only(
                     left: AppFunctions.isLanguageArabic() ? 10 : 0,
                     right: AppFunctions.isLanguageArabic() ? 0 : 16),
-                child: Icon(Icons.arrow_drop_down),
+                child: const Icon(Icons.arrow_drop_down),
               ),
               labelText: S.of(context).device_type,
               controller: typeDeviceController,
@@ -140,6 +142,7 @@ class _EditDeviceDialogState extends State<EditDeviceDialog> {
       ),
       actions: [
         RowActionButtonEditDialog(
+            deviceCubit: widget.deviceCubit,
             formstate: formstate,
             widget: widget,
             nameDeviceController: nameDeviceController,

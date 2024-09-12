@@ -8,17 +8,19 @@ import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/device_model.dart';
+import '../../cubit/device_cubit.dart';
 import '../session/details/details_session_bottom_sheet.dart';
 import 'delete/delet_confirmation_dialog.dart';
 import 'edit/edit_device_dialog.dart';
 
 class SlidableCardItem extends StatelessWidget {
+  final DeviceModel device;
+  final DeviceCubit deviceCubit;
   const SlidableCardItem({
+    required this.deviceCubit,
     super.key,
     required this.device,
   });
-
-  final DeviceModel device;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class SlidableCardItem extends StatelessWidget {
           CustomSlidableAction(
             borderRadius: const BorderRadius.all(Radius.circular(20)),
             onPressed: (context) {
-              showDeleteDeviceConfirmationDialog(context, device);
+              showDeleteDeviceConfirmationDialog(context, device, deviceCubit);
             },
             backgroundColor: AppColors.redShade100,
             child: const Icon(Icons.delete, color: AppColors.red),
@@ -47,6 +49,7 @@ class SlidableCardItem extends StatelessWidget {
                 context: context,
                 builder: (BuildContext dialogContext) {
                   return EditDeviceDialog(
+                    deviceCubit: deviceCubit,
                     device: device,
                   );
                 },
@@ -61,7 +64,8 @@ class SlidableCardItem extends StatelessWidget {
         ],
       ),
       child: GestureDetector(
-        onTap: () => showDetailsSessionBottomSheet(context, true, device),
+        onTap: () =>
+            showDetailsSessionBottomSheet(context, true, device, deviceCubit),
         child: SizedBox(
           height: 90.h,
           child: Card(
@@ -100,11 +104,7 @@ class SlidableCardItem extends StatelessWidget {
                                 .copyWith(fontSize: 22.sp),
                           ),
                           Text(
-                            device.price +
-                                " " +
-                                S.of(context).currency +
-                                "/ " +
-                                S.of(context).hour,
+                            "${device.price} ${S.of(context).currency}/ ${S.of(context).hour}",
                             style: AppTextStyles.font16graySemiBold
                                 .copyWith(color: AppColors.gray),
                           ),

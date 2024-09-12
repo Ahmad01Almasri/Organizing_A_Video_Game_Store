@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
 
 import '../../../../../../core/helpers/spacing.dart';
@@ -12,9 +11,11 @@ import 'action_button.dart';
 
 class DeletSessionActionButton extends StatefulWidget {
   final DeviceModel device;
+  final DeviceCubit deviceCubit;
   const DeletSessionActionButton({
     super.key,
     required this.device,
+    required this.deviceCubit,
   });
 
   @override
@@ -33,11 +34,10 @@ class _DeletSessionActionButtonState extends State<DeletSessionActionButton> {
             textNameButton: S.of(context).end_session,
             textNamestyle: AppTextStyles.font16WhiteBold,
             onPressed: () async {
-              showClosedSessionDialog(context, widget.device);
+              showClosedSessionDialog(
+                  context, widget.device, widget.deviceCubit);
               await widget.device.removeCustomer();
-              await context
-                  .read<DeviceCubit>()
-                  .toggleDeviceAvailability(widget.device);
+              await widget.deviceCubit.toggleDeviceAvailability(widget.device);
             }),
         horizontalSpace(10),
         ActionButton(

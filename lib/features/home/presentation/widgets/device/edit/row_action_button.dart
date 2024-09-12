@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../../../core/theming/colors.dart';
@@ -17,8 +16,9 @@ class RowActionButtonEditDialog extends StatelessWidget {
     required this.nameDeviceController,
     required this.typeDeviceController,
     required this.priceHourDeviceController,
+    required this.deviceCubit,
   });
-
+  final DeviceCubit deviceCubit;
   final GlobalKey<FormState> formstate;
   final EditDeviceDialog widget;
   final TextEditingController nameDeviceController;
@@ -56,7 +56,7 @@ class RowActionButtonEditDialog extends StatelessWidget {
                 await deviceBox.put(updatedDevice.key, updatedDevice);
               }
 
-              context.read<DeviceCubit>().updateDevice(updatedDevice);
+              deviceCubit.updateDevice(updatedDevice);
               Navigator.pop(context);
             }
           },

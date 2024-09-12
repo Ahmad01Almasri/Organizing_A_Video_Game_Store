@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/core/helpers/spacing.dart';
+import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
 
 import 'form_add_item.dart';
 import 'save_add_item_button.dart';
@@ -8,6 +9,7 @@ import 'save_add_item_button.dart';
 String selectedDevice = "";
 Future<dynamic> showAddDeviceBottomSheet(
   BuildContext context,
+  DeviceCubit deviceCubit,
 ) {
   final nameDeviceTextController = TextEditingController();
   final typeDeviceTextController = TextEditingController();
@@ -40,6 +42,7 @@ Future<dynamic> showAddDeviceBottomSheet(
                 ),
                 verticalSpace(30),
                 SaveAddItemButton(
+                  deviceCubit: deviceCubit,
                   formstate: formstate,
                   nameDeviceController: nameDeviceTextController,
                   typeDeviceController: typeDeviceTextController,
