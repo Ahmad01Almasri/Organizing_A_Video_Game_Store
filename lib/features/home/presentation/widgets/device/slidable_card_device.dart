@@ -80,12 +80,12 @@ class SlidableCardItem extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      device.type == S.of(context).laptop
+                      device.type == "laptop"
                           ? const Icon(
                               Icons.laptop_windows_rounded,
                               color: AppColors.gray,
                             )
-                          : device.type == S.of(context).computer
+                          : device.type == "computer"
                               ? const Icon(
                                   Icons.desktop_windows_rounded,
                                   color: AppColors.gray,

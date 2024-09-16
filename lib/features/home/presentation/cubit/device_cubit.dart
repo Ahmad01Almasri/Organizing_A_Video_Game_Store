@@ -18,7 +18,7 @@ class DeviceCubit extends Cubit<DeviceState> {
       final devices = await deviceUseCase!.loadDevices();
       emit(DeviceState.loaded(devices));
     } catch (e) {
-      print('Error loading devices: $e'); // طباعة الخطأ في وحدة التحكم
+      print('Error loading devices: $e');
       emit(DeviceState.error("Failed to load devices"));
     }
   }

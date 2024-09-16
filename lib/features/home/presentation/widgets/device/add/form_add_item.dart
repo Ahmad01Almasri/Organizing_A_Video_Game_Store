@@ -64,7 +64,7 @@ class _FormTextFieldAddItemState extends State<FormTextFieldAddItem> {
                       _selectedDevice = item;
                       widget.typeDeviceController.text = _selectedDevice!;
                     });
-                    Navigator.pop(context); // إغلاق الحوار بعد اختيار العنصر
+                    Navigator.pop(context);
                   },
                 );
               }).toList(),

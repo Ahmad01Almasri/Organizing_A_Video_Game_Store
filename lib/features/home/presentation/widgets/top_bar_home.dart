@@ -32,31 +32,58 @@ class TopBarHome extends StatelessWidget {
               size: 30,
             ),
             itemBuilder: (context) => [
-              PopupMenuItem(
-                value: S.of(context).all_devices,
-                child: Text(S.of(context).all_devices),
+              const PopupMenuItem(
+                value: "All devices",
+                child: Text("All devices"),
               ),
-              PopupMenuItem(
-                value: S.of(context).laptop,
-                child: Text(S.of(context).laptop),
+              const PopupMenuItem(
+                value: "laptop",
+                child: Text("laptop"),
               ),
-              PopupMenuItem(
-                value: S.of(context).computer,
-                child: Text(S.of(context).computer),
+              const PopupMenuItem(
+                value: "computer",
+                child: Text("computer"),
               ),
-              PopupMenuItem(
-                value: S.of(context).playstation,
-                child: Text(S.of(context).playstation),
+              const PopupMenuItem(
+                value: "playstation",
+                child: Text("playstation"),
               ),
             ],
           ),
           BlocBuilder<LanguageCubit, Locale>(
             builder: (context, locale) {
-              return Switch(
-                value: locale.languageCode == 'ar',
-                onChanged: (_) =>
-                    context.read<LanguageCubit>().toggleLanguage(),
-                activeColor: Colors.blue,
+              return DropdownButton<Locale>(
+                icon: const Icon(Icons.language), // أيقونة لتغيير اللغة
+                underline: Container(), // إزالة الخط السفلي
+                onChanged: (Locale? newLocale) {
+                  if (newLocale != null) {
+                    context.read<LanguageCubit>().toggleLanguage();
+                  }
+                },
+                items: const [
+                  DropdownMenuItem(
+                    value: Locale('en'),
+                    child: Row(
+                      children: [
+                        Icon(Icons
+                            .flag), // رمز للعلم أو يمكن استخدام صور الأعلام
+                        SizedBox(width: 8),
+                        Text('English'),
+                      ],
+                    ),
+                  ),
+                  DropdownMenuItem(
+                    value: Locale('ar'),
+                    child: Row(
+                      children: [
+                        Icon(Icons
+                            .flag), // رمز للعلم أو يمكن استخدام صور الأعلام
+                        SizedBox(width: 8),
+                        Text('العربية'),
+                      ],
+                    ),
+                  ),
+                ],
               );
             },
           ),
