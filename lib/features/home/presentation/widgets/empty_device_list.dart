@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:game_store/core/theming/styles.dart';
+import 'package:game_store/core/theming/app_text_styles.dart';
 
 import '../../../../generated/l10n.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/customer_model.dart';
-import '../../data/models/device_model.dart';
-import '../../domain/use_cases/z.dart';
+import '../../../data/models/customer_model.dart';
+import '../../../data/models/device_model.dart';
+import '../../../domain/use_cases/z.dart';
 import 'device_state.dart';
 import 'package:flutter/material.dart';
-import '../../../../generated/l10n.dart';
-import '../widgets/device/show_no_device_type_toast.dart';
+import '../../../../../generated/l10n.dart';
+import '../../widgets/device/show_no_device_type_toast.dart';
 
 class DeviceCubit extends Cubit<DeviceState> {
   final DeviceUseCase? deviceUseCase;

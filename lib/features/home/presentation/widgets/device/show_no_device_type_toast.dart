@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:game_store/core/theming/colors.dart';
-import 'package:game_store/core/theming/styles.dart';
+import 'package:game_store/core/theming/app_colors.dart';
+import 'package:game_store/core/theming/app_text_styles.dart';
 
 void showNoDeviceTypeToast(BuildContext context, String message) {
   final overlay = Overlay.of(context);

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/core/theming/theme_date_var.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
-import 'features/lan/cubit.dart';
+import 'features/home/presentation/cubits/language/language_cubit.dart';
 import 'generated/l10n.dart';
 
 class GameStoreApp extends StatelessWidget {

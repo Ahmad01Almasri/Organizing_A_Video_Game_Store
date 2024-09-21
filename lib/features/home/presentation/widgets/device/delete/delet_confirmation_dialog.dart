@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/theming/colors.dart';
-import '../../../../../../core/theming/styles.dart';
+import '../../../../../../core/theming/app_colors.dart';
+import '../../../../../../core/theming/app_text_styles.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../data/models/device_model.dart';
-import '../../../cubit/device_cubit.dart';
+import '../../../cubits/device/device_cubit.dart';
 
 Future<void> showDeleteDeviceConfirmationDialog(
     BuildContext context, DeviceModel device, DeviceCubit deviceCubit) async {

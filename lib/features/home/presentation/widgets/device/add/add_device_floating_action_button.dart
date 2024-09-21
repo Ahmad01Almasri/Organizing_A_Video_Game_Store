@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
-import '../../../../../../core/theming/colors.dart';
+import 'package:game_store/features/home/presentation/cubits/device/device_cubit.dart';
+import '../../../../../../core/theming/app_colors.dart';
 import 'add_device_bottom_sheet.dart';
 
 class AddDeviceButton extends StatelessWidget {

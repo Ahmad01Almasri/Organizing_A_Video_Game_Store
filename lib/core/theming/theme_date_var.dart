@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:game_store/core/theming/styles.dart';
-import 'colors.dart';
+import 'package:game_store/core/theming/app_text_styles.dart';
+import 'app_colors.dart';
 
 class AppThemeData {
   static ThemeData lightTheme() {

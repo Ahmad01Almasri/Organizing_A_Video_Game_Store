@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/use_cases/z.dart';
-import '../cubit/device_cubit.dart';
+import '../cubits/device/device_cubit.dart';
 import '../widgets/device/add/add_device_floating_action_button.dart';
 import '../widgets/cubit_builder_home_page.dart';
 import 'package:game_store/injection_container.dart' as di;

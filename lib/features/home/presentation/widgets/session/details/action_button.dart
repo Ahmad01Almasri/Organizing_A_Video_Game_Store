@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/theming/colors.dart';
-import '../../../../../../core/theming/styles.dart';
+import '../../../../../../core/theming/app_colors.dart';
+import '../../../../../../core/theming/app_text_styles.dart';
 
 class ActionButton extends StatelessWidget {
   final String textNameButton;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/theming/styles.dart';
+import '../../../../core/theming/app_text_styles.dart';
 import '../../../../generated/l10n.dart';
-import '../../../lan/cubit.dart';
+import '../cubits/language/language_cubit.dart';
 
 class TopBarHome extends StatelessWidget {
   final Function(String) onFilterSelected;

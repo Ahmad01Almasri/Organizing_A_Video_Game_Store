@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:game_store/core/theming/colors.dart';
-import 'package:game_store/core/theming/styles.dart';
+import 'package:game_store/core/theming/app_colors.dart';
+import 'package:game_store/core/theming/app_text_styles.dart';
 import '../../../../../../core/helpers/app_functions.dart';
 import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/widget/custom_text_field.dart';

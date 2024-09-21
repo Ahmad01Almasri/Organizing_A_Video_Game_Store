@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../theming/colors.dart';
-import '../theming/styles.dart';
+import '../theming/app_colors.dart';
+import '../theming/app_text_styles.dart';
 
 class CustomTextForm extends StatelessWidget {
   final String? hinttext;

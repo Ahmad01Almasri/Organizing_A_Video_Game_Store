@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
-import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
+import 'package:game_store/features/home/presentation/cubits/device/device_cubit.dart';
 
 import 'card_decive.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:game_store/core/theming/colors.dart';
+import 'package:game_store/core/theming/app_colors.dart';
 import '../../../../../../core/helpers/app_constants.dart';
 import '../../../../../../core/helpers/app_functions.dart';
 import '../../../../../../core/helpers/spacing.dart';
-import '../../../../../../core/theming/styles.dart';
+import '../../../../../../core/theming/app_text_styles.dart';
 import '../../../../../../core/widget/custom_text_field.dart';
 import '../../../../../../generated/l10n.dart';
 

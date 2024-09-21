@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:game_store/features/home/presentation/cubit/device_cubit.dart';
-import '../../../../../../core/theming/colors.dart';
-import '../../../../../../core/theming/styles.dart';
+import 'package:game_store/features/home/presentation/cubits/device/device_cubit.dart';
+import '../../../../../../core/theming/app_colors.dart';
+import '../../../../../../core/theming/app_text_styles.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../data/models/device_model.dart';
 import '../../../../data/models/customer_model.dart';

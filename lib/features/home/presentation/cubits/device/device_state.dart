@@ -1,4 +1,4 @@
-import '../../data/models/device_model.dart';
+import '../../../data/models/device_model.dart';
 
 class DeviceState {
   final DeviceStateType type;

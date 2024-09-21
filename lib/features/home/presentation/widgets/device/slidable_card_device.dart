@@ -4,11 +4,11 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../../../../core/helpers/app_functions.dart';
 import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/styles.dart';
+import '../../../../../core/theming/app_colors.dart';
+import '../../../../../core/theming/app_text_styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/device_model.dart';
-import '../../cubit/device_cubit.dart';
+import '../../cubits/device/device_cubit.dart';
 import '../session/details/details_session_bottom_sheet.dart';
 import 'delete/delet_confirmation_dialog.dart';
 import 'edit/edit_device_dialog.dart';

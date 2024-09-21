@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
 
 import '../../../../../../core/helpers/spacing.dart';
-import '../../../../../../core/theming/colors.dart';
-import '../../../../../../core/theming/styles.dart';
+import '../../../../../../core/theming/app_colors.dart';
+import '../../../../../../core/theming/app_text_styles.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../cubit/device_cubit.dart';
+import '../../../cubits/device/device_cubit.dart';
 import '../delete/closed_session_dialog.dart';
 import 'action_button.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:game_store/core/theming/colors.dart';
-import 'package:game_store/core/theming/styles.dart';
+import 'package:game_store/core/theming/app_colors.dart';
+import 'package:game_store/core/theming/app_text_styles.dart';
 import 'package:game_store/features/home/data/models/device_model.dart';
 
 import '../../../../../../core/helpers/app_constants.dart';
@@ -9,7 +9,7 @@ import '../../../../../../core/helpers/app_functions.dart';
 import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/widget/custom_text_field.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../cubit/device_cubit.dart';
+import '../../../cubits/device/device_cubit.dart';
 import 'row_action_button.dart';
 
 class EditDeviceDialog extends StatefulWidget {
