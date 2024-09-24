@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 import 'customer_model.dart';
+import 'finished_customers_manager.dart';
 
 part 'device_model.g.dart';
 
@@ -8,14 +9,19 @@ part 'device_model.g.dart';
 class DeviceModel extends HiveObject {
   @HiveField(0)
   final String id;
+
   @HiveField(1)
   String name;
+
   @HiveField(2)
   String type;
+
   @HiveField(3)
   String price;
+
   @HiveField(4)
   bool isAvailable;
+
   @HiveField(5)
   CustomerModel? customer; // Nullable to allow for no customer
 
@@ -38,17 +44,25 @@ class DeviceModel extends HiveObject {
     await this.save();
   }
 
-// Method to remove the current customer
+  // Method to remove the current customer and store them globally
   Future<void> removeCustomer() async {
     if (this.customer != null) {
-      this.customer = null;
+      // Get the FinishedCustomersManager box
+      var managerBox =
+          Hive.box<FinishedCustomersManager>('finishedCustomersManagerBox');
 
-      if (this.isInBox) {
-        await this.save();
-      } else {
-        var deviceBox = Hive.box<DeviceModel>('devicesBox');
-        await deviceBox.put(this.id, this);
+      // Get the manager instance
+      var manager = managerBox.get('manager');
+      if (manager == null) {
+        manager = FinishedCustomersManager();
+        await managerBox.put('manager', manager);
       }
+
+      // Add the customer to the manager
+      await manager.addFinishedCustomer(this.customer!);
+
+      this.customer = null;
+      await this.save();
     }
   }
 

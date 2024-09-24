@@ -33,7 +33,7 @@ class GameStoreApp extends StatelessWidget {
               theme: AppThemeData.lightTheme(),
               debugShowCheckedModeBanner: false,
               initialRoute: Routes.homeScreen,
-              onGenerateRoute: appRouter.generateRoute,
+              onGenerateRoute: appRouter.onGenerateRoute,
             ),
           );
         },

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:game_store/core/theming/app_colors.dart';
-import 'package:game_store/core/theming/app_text_styles.dart';
-
-import '../../../../../../generated/l10n.dart';
+import 'package:game_store/core/helpers/spacing.dart';
 import '../../../../data/models/device_model.dart';
 import '../../../cubits/device/device_cubit.dart';
+import 'package:game_store/core/theming/app_colors.dart';
+import 'package:game_store/core/theming/app_text_styles.dart';
+import '../../../../../../generated/l10n.dart';
 
 Future<void> showClosedSessionDialog(
     BuildContext context, DeviceModel device, DeviceCubit deviceCubit) async {
@@ -34,9 +34,15 @@ Future<void> showClosedSessionDialog(
   final totalPrice = price * totalMinutes / 60;
   print('Total price: $totalPrice');
 
+  // Update the total price for the customer in the device and save the device
+  if (device.customer != null) {
+    device.customer!.totalPrice = totalPrice; // Store the calculated price
+    await device.save(); // Save the device, which also saves the customer
+  }
+
   return showDialog<void>(
     context: context,
-    barrierDismissible: true,
+    barrierDismissible: false,
     builder: (context) {
       return AlertDialog(
         title: Text(
@@ -52,14 +58,17 @@ Future<void> showClosedSessionDialog(
               ),
               TextSpan(
                 text:
-                    totalPrice.toStringAsFixed(2), // format to 2 decimal places
+                    totalPrice.toStringAsFixed(1), // format to 2 decimal places
                 style: AppTextStyles.font16grayBold
                     .copyWith(color: AppColors.primaryColor),
+              ),
+              const TextSpan(
+                text: " ",
               ),
               TextSpan(
                 text: S.of(context).currency,
                 style: AppTextStyles.font16grayBold
-                    .copyWith(color: AppColors.primaryColor),
+                    .copyWith(color: AppColors.black),
               ),
             ],
           ),

@@ -6,7 +6,7 @@ import 'package:game_store/features/home/data/models/device_model.dart';
 import 'package:game_store/features/home/presentation/cubits/device/device_cubit.dart';
 import '../add/add_session_button.dart';
 import 'form_detailss_session.dart';
-import 'row_action_details_session_bottom_sheet.dart';
+import '../delete/row_action_details_session_bottom_sheet.dart';
 
 TimeOfDay? selectedTime = null;
 String customerName = "";

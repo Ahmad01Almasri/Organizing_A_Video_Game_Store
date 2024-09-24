@@ -11,12 +11,16 @@ class AppTextStyles {
     color: Colors.black,
   );
 
-  static TextStyle font20BlackBold = TextStyle(
+  static TextStyle font18BlackBold = TextStyle(
     fontSize: 18.sp,
     fontWeight: AppFontWeight.semiBold,
     color: AppColors.black,
   );
-
+  static TextStyle font20WhiteBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: AppFontWeight.semiBold,
+    color: AppColors.white,
+  );
   static TextStyle font35BlackBold = TextStyle(
     fontSize: 35.sp,
     fontWeight: AppFontWeight.bold,

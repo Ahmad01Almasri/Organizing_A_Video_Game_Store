@@ -8,6 +8,7 @@ import '../widgets/top_bar_home.dart';
 
 class CubitBuilderHomePage extends StatelessWidget {
   final DeviceCubit devicecubit;
+
   const CubitBuilderHomePage({
     super.key,
     required this.devicecubit,
@@ -26,13 +27,14 @@ class CubitBuilderHomePage extends StatelessWidget {
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TopBarHome(
-                      onFilterSelected: (String type) {
-                        context
-                            .read<DeviceCubit>()
-                            .filterDevicesByType(context, type);
-                      },
-                    ),
+                    // TopBarHome(
+                    //   device: devices, // Passing devices to TopBarHome
+                    //   onFilterSelected: (String type) {
+                    //     context
+                    //         .read<DeviceCubit>()
+                    //         .filterDevicesByType(context, type);
+                    //   },
+                    // ),
                     ListViewDevices(
                       devices: devices,
                       deviceCubit: devicecubit,
