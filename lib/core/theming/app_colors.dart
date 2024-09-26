@@ -9,7 +9,7 @@ class AppColors {
   static const Color lighterGray = Color(0xFFEDEDED);
   static const Color moreLightGray = Color(0xFFFDFDFF);
   static const Color moreLighterGray = Color(0xFFF5F5F5);
-  static const Color primaryColor = Color.fromARGB(255, 162, 1, 1);
+  static const Color primaryColor = Color(0xffFF0000);
   static const Color offWhite = Color(0xffF8F4F9);
   static const Color deepBrown = Color(0xff6B4B3E);
   static const Color grey = Color(0xffC4C4C4);
@@ -18,7 +18,7 @@ class AppColors {
   static const Color black = Color(0xff000000);
   static const Color amber = Color(0xffffc107);
   static const Color amberShade100 = Color(0xffffecb3);
-  static const Color white = Color(0xff000000);
+  static const Color white = Color(0xffffffff);
   static const Color black38 = Color(0x61000000);
   static const Color red = Color(0xffFF0000);
   static const Color redShade100 = Color(0xffffcdd2);

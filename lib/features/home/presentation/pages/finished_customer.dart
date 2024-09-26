@@ -4,6 +4,7 @@ import 'package:game_store/core/theming/app_text_styles.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart'; // لتنسيق التاريخ
+import '../../../../generated/l10n.dart';
 import '../../data/models/customer_model.dart';
 import '../../data/models/finished_customers_manager.dart';
 
@@ -144,25 +145,42 @@ class FinishedCustomersScreen extends StatelessWidget {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: const Text('المجموع الكلي'),
-                  content: Text(
-                    'المجموع الكلي لجميع الزبائن: ${totalPrice.toStringAsFixed(2)}',
-                    style: const TextStyle(fontSize: 18),
+                  title: Text(
+                    'المجموع الكلي' " :",
+                    style: AppTextStyles.font22BlackW600,
                   ),
-                  actions: <Widget>[
-                    TextButton(
-                      child: const Text('حسنًا'),
+                  content: Text(
+                    totalPrice.toStringAsFixed(2),
+                    style: AppTextStyles.font18PrimaryBold
+                        .copyWith(color: AppColors.primaryColor),
+                  ),
+                  actions: [
+                    MaterialButton(
+                      height: 40,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      color: AppColors.primaryColor,
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.pop(context);
                       },
-                    ),
+                      child: Text(
+                        S.of(context).close,
+                        style: AppTextStyles.font15DarkBold
+                            .copyWith(color: AppColors.white),
+                      ),
+                    )
                   ],
                 );
               },
             );
           },
           backgroundColor: AppColors.primaryColor,
-          child: const Text("الجرد"),
+          child: Text(
+            "الجرد",
+            style:
+                AppTextStyles.font18BlackBold.copyWith(color: AppColors.white),
+          ),
         ),
       ),
     );

@@ -114,9 +114,8 @@ class SlidableCardItem extends StatelessWidget {
                   ),
                   CircleAvatar(
                     maxRadius: 10.h,
-                    backgroundColor: device.isAvailable
-                        ? AppColors.primaryColor
-                        : AppColors.red,
+                    backgroundColor:
+                        device.isAvailable ? AppColors.green : AppColors.red,
                   ),
                 ],
               ),

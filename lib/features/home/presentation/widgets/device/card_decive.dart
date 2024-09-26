@@ -82,7 +82,7 @@ class CardDevice extends StatelessWidget {
                       CircleAvatar(
                         maxRadius: 10.h,
                         backgroundColor: device.isAvailable
-                            ? AppColors.primaryColor
+                            ? AppColors.green
                             : AppColors.red,
                       ),
                     ],

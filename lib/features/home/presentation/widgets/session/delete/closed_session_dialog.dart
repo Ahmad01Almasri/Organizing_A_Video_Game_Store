@@ -78,14 +78,15 @@ Future<void> showClosedSessionDialog(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
-            color: AppColors.grey,
+            color: AppColors.primaryColor,
             onPressed: () {
               Navigator.pop(context);
               Navigator.pop(context);
             },
             child: Text(
               S.of(context).close,
-              style: AppTextStyles.font15DarkBold,
+              style:
+                  AppTextStyles.font15DarkBold.copyWith(color: AppColors.white),
             ),
           )
         ],
