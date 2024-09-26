@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/features/home/presentation/cubits/device/device_cubit.dart';
+import '../../../../../../core/services/notification_services.dart';
 import '../../../../../../core/theming/app_colors.dart';
 import '../../../../../../core/theming/app_text_styles.dart';
 import '../../../../../../generated/l10n.dart';
@@ -26,7 +27,18 @@ class AddSessionButton extends StatefulWidget {
 }
 
 class _AddSessionButtonState extends State<AddSessionButton> {
-  int counter = 0;
+  void setAlarmExample() async {
+    // حدد وقت المنبه
+    DateTime alarmTime =
+        DateTime.now().add(Duration(seconds: 10)); // بعد 10 ثوانٍ
+
+    // استدعاء دالة ضبط المنبه
+    await NotificationService().scheduleAlarm(
+      alarmName: "الاستيقاظ",
+      alarmTime: alarmTime,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -46,13 +58,7 @@ class _AddSessionButtonState extends State<AddSessionButton> {
                 selectedTime!.hour,
                 selectedTime!.minute);
             print("{::::::::::::::::::::::::::::::$selectedDateTime}");
-            // Schedule notification
-            //       await NotificationService().scheduleNotification(
-            //     dateTime: DateTime.now().add(Duration(seconds: 120)),
-            //     id: 1,
-            //     title: "إشعار مجدول",
-            //     body: "تم إرسال الإشعار بعد 120 ثانية");
-            // print(DateTime.now());
+
             selectedDateTime = DateTime(selectedTime!.minute);
           }
           customerName = widget.customerNameController.text;

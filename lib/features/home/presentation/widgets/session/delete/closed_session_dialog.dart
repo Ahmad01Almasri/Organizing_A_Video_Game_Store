@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:game_store/core/helpers/spacing.dart';
 import '../../../../data/models/device_model.dart';
 import '../../../cubits/device/device_cubit.dart';
 import 'package:game_store/core/theming/app_colors.dart';

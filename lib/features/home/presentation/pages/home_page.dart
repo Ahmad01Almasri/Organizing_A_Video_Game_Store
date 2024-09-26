@@ -8,7 +8,7 @@ import '../../domain/use_cases/z.dart';
 import '../cubits/device/device_cubit.dart';
 import '../cubits/device/device_state.dart';
 import '../widgets/device/add/add_device_floating_action_button.dart';
-import '../widgets/cubit_builder_home_page.dart';
+import '../widgets/device/cubit_builder_get_all_devices.dart';
 import 'package:game_store/injection_container.dart' as di;
 
 class HomeScreen extends StatelessWidget {

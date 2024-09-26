@@ -72,7 +72,7 @@ class FinishedCustomersScreen extends StatelessWidget {
                     color: AppColors.primaryColor,
                     margin: const EdgeInsets.symmetric(vertical: 8),
                     child: ExpansionTile(
-                      backgroundColor: AppColors.white,
+                      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                       title: Text(
                         'التاريخ: $date              المجموع: ${dailyTotal.toStringAsFixed(2)}',
                         style: const TextStyle(

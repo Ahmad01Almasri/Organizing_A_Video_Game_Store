@@ -6,7 +6,9 @@ import 'package:game_store/features/home/data/models/finished_customers_manager.
 import 'core/routing/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game_store/injection_container.dart' as di;
+import 'package:timezone/data/latest.dart' as tz;
 
+import 'core/services/notification_services.dart';
 import 'features/home/data/data_sources/local_device_data_source.dart';
 import 'game_video_store_app.dart';
 
@@ -33,7 +35,12 @@ void main() async {
     await finishedCustomersBox.put('manager', FinishedCustomersManager());
   }
 
-// Ensure box initialization
+  // Initialize time zone for notification scheduling
+  tz.initializeTimeZones();
+
+  // Setup notifications
+  await setupNotifications();
+
   // Ensure screen util
   await ScreenUtil.ensureScreenSize();
 

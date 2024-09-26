@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubits/device/device_cubit.dart';
-import '../cubits/device/device_state.dart';
-import '../widgets/empty_device_list.dart';
-import 'device/list_view_device_item.dart';
-import '../widgets/top_bar_home.dart';
+import '../../cubits/device/device_cubit.dart';
+import '../../cubits/device/device_state.dart';
+import 'empty_device_list.dart';
+import 'list_view_device_item.dart';
 
 class CubitBuilderHomePage extends StatelessWidget {
   final DeviceCubit devicecubit;
@@ -27,14 +26,6 @@ class CubitBuilderHomePage extends StatelessWidget {
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // TopBarHome(
-                    //   device: devices, // Passing devices to TopBarHome
-                    //   onFilterSelected: (String type) {
-                    //     context
-                    //         .read<DeviceCubit>()
-                    //         .filterDevicesByType(context, type);
-                    //   },
-                    // ),
                     ListViewDevices(
                       devices: devices,
                       deviceCubit: devicecubit,

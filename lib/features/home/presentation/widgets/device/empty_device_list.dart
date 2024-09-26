@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_store/core/theming/app_text_styles.dart';
 
-import '../../../../generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 
 class EmptyDeviceListWidget extends StatelessWidget {
   const EmptyDeviceListWidget({
