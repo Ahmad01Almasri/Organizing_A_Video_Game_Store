@@ -20,7 +20,7 @@ Future<dynamic> showDetailsSessionBottomSheet(BuildContext context,
         ? context.read<DeviceCubit>().getCustomerDuration(device.customer)
         : '0',
   );
-
+  final priceController = TextEditingController(); // لإدخال السعر الجديد
   final GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   return showModalBottomSheet(
@@ -42,6 +42,8 @@ Future<dynamic> showDetailsSessionBottomSheet(BuildContext context,
               child: Column(
                 children: [
                   FormTextDetailsSession(
+                    priceController: priceController,
+                    customer: device.customer,
                     isAvailable: device.isAvailable,
                     customerNameController: customerNameController,
                     customerTimeController: customerTimeController,
@@ -52,6 +54,8 @@ Future<dynamic> showDetailsSessionBottomSheet(BuildContext context,
                           deviceCubit: deviceCubit,
                           formstate: formstate,
                           customerNameController: customerNameController,
+                          priceController: priceController, // تمرير السعر
+
                           device: device,
                         )
                       : DeletSessionActionButton(

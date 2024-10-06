@@ -16,12 +16,14 @@ class AddSessionButton extends StatefulWidget {
     required this.customerNameController,
     required this.device,
     required this.deviceCubit,
+    required this.priceController, // تمرير التحكم بالسعر
   });
 
   final GlobalKey<FormState> formstate;
   final TextEditingController customerNameController;
   final DeviceModel device;
   final DeviceCubit deviceCubit;
+  final TextEditingController priceController; // التحكم بحقل السعر
   @override
   _AddSessionButtonState createState() => _AddSessionButtonState();
 }
@@ -62,11 +64,13 @@ class _AddSessionButtonState extends State<AddSessionButton> {
             selectedDateTime = DateTime(selectedTime!.minute);
           }
           customerName = widget.customerNameController.text;
+          final price = int.tryParse(widget.priceController.text) ?? 0;
 
           if (customerName.isNotEmpty) {
             final customer = CustomerModel(
               selectedTime: selectedDateTime,
               name: customerName,
+              prices: [price],
             );
 
             await widget.device.setCustomer(customer);

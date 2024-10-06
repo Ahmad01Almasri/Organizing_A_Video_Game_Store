@@ -22,13 +22,14 @@ class CustomerModelAdapter extends TypeAdapter<CustomerModel> {
       createdAt: fields[2] as DateTime?,
       selectedTime: fields[3] as DateTime?,
       totalPrice: fields[4] as double?,
+      prices: (fields[5] as List?)?.cast<int>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, CustomerModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class CustomerModelAdapter extends TypeAdapter<CustomerModel> {
       ..writeByte(3)
       ..write(obj.selectedTime)
       ..writeByte(4)
-      ..write(obj.totalPrice);
+      ..write(obj.totalPrice)
+      ..writeByte(5)
+      ..write(obj.prices);
   }
 
   @override

@@ -2,7 +2,7 @@ import 'dart:ui'; // لاستيراد window.locale
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LanguageCubit extends Cubit<Locale> {
-  LanguageCubit() : super(window.locale); // استخدام لغة النظام كلغة افتراضية
+  LanguageCubit() : super(Locale('ar')); // استخدام لغة النظام كلغة افتراضية
 
   void toggleLanguage() {
     final newLocale =

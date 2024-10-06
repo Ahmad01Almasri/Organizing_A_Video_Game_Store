@@ -4,6 +4,7 @@ import 'package:game_store/core/theming/app_text_styles.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart'; // لتنسيق التاريخ
+import '../../../../core/helpers/spacing.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/customer_model.dart';
 import '../../data/models/finished_customers_manager.dart';
@@ -93,7 +94,7 @@ class FinishedCustomersScreen extends StatelessWidget {
                                     color: AppColors.primaryColor,
                                     size: 40,
                                   ),
-                                  const SizedBox(width: 16),
+                                  horizontalSpace(16),
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment:
@@ -105,15 +106,22 @@ class FinishedCustomersScreen extends StatelessWidget {
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        const SizedBox(height: 8),
+                                        verticalSpace(10),
                                         Text(
                                           'الوقت: ${DateFormat(' kk:mm').format(customer.createdAt)}',
                                           style: const TextStyle(
                                               fontSize: 16, color: Colors.grey),
                                         ),
-                                        const SizedBox(height: 8),
+                                        verticalSpace(10),
                                         Text(
                                           'المبلغ: ${customer.totalPrice?.toStringAsFixed(1) ?? 'غير متوفر'}',
+                                          style: const TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        verticalSpace(10),
+                                        Text(
+                                          'طلبات إضافية: ${customer.prices ?? 'غير متوفر'}',
                                           style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500),

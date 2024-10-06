@@ -20,12 +20,17 @@ class CustomerModel extends HiveObject {
   @HiveField(4)
   double? totalPrice; // لتخزين السعر المحسوب
 
+  @HiveField(5)
+  List<int> prices; // قائمة تخزين أسعار الطلبيات
+
   CustomerModel({
     String? id,
     required this.name,
     DateTime? createdAt,
     required this.selectedTime,
     this.totalPrice, // يمكن إضافته اختيارياً
+    List<int>? prices, // قائمة اختيارية للأسعار
   })  : id = id ?? const Uuid().v1(),
-        createdAt = createdAt ?? DateTime.now();
+        createdAt = createdAt ?? DateTime.now(),
+        prices = prices ?? []; // تهيئة قائمة الأسعار
 }
